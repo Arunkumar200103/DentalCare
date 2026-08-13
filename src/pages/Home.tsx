@@ -7,89 +7,95 @@ import {
   Heart, 
   Star,
   Calendar,
-  Stethoscope,
+  Brain,
   Users,
-  Clock
+  Clock,
+  Activity
 } from 'lucide-react';
-import dentalcare from '../img/dentalcare.jpg'
+import clinicHero from '../img/clinic_hero.png';
 
 const Home = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Miller",
-      text: "Exceptional care and professionalism. The staff made me feel comfortable throughout my treatment.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      text: "State-of-the-art facility with caring professionals. Highly recommend for all dental needs.",
+      name: "Ramesh Kumar",
+      text: "Exceptional psychiatric care. Dr. Nirmal's diagnosis helped me overcome chronic insomnia and anxiety. I can finally sleep peacefully.",
       rating: 5,
       image: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
     },
     {
+      id: 2,
+      name: "Priya Sundar",
+      text: "The counseling and de-addiction program is outstanding. The staff is highly supportive, extremely compassionate, and strictly respects patient confidentiality.",
+      rating: 5,
+      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+    },
+    {
       id: 3,
-      name: "Emily Rodriguez",
-      text: "Pain-free procedures and excellent results. The team here truly cares about patient comfort.",
+      name: "Anand Raj",
+      text: "Excellent therapy sessions for work stress and anxiety. The clinic environment is incredibly calm and professional. Highly recommended!",
       rating: 5,
       image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
     }
   ];
 
   const stats = [
-    { icon: Users, value: "5,000+", label: "Happy Patients" },
+    { icon: Users, value: "10,000+", label: "Happy Patients" },
     { icon: Award, value: "15+", label: "Years Experience" },
-    { icon: Stethoscope, value: "20+", label: "Services Offered" },
-    { icon: Clock, value: "24/7", label: "Emergency Care" }
+    { icon: Brain, value: "10+", label: "Specialized Services" },
+    { icon: Clock, value: "Mon-Sat", label: "6:00 PM - 9:30 PM" }
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-sky-50 via-white to-sky-50 py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6">
-                Your Smile,{' '}
-                <span className="text-sky-600">Our Priority</span>
+              <div className="inline-flex items-center space-x-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+                <Brain className="h-4 w-4" />
+                <span>Neuropsychiatry, De-addiction & Sexual Health</span>
+              </div>
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Your Mental Health,{' '}
+                <span className="text-indigo-600">Our Commited Priority</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Experience exceptional dental care with our team of dedicated professionals. 
-                From routine cleanings to advanced treatments, we're here to keep your smile healthy and bright.
+                Experience compassionate, evidence-based psychiatric and counseling care. 
+                Led by Dr. Nirmal Kumar Seenan, we help you overcome anxiety, depression, addictions, 
+                and stress in a completely confidential environment.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/book-appointment"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-sky-600 text-white font-medium rounded-lg hover:bg-sky-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Book Appointment
+                  Book Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-sky-600 text-sky-600 font-medium rounded-lg hover:bg-sky-600 hover:text-white transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 font-medium rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
                 >
-                  Our Services
+                  Explore Services
                 </Link>
               </div>
             </div>
             <div className="relative">
               <img
-                src={dentalcare}
-                alt="Dental Care"
-                className="rounded-2xl shadow-2xl"
+                src={clinicHero}
+                alt="DS Clinic Consultation Room"
+                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-emerald-100 rounded-full">
-                    <Heart className="h-6 w-6 text-emerald-600" />
+                    <Heart className="h-6 w-6 text-emerald-600 animate-pulse" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-800">99%</div>
-                    <div className="text-sm text-gray-600">Satisfaction Rate</div>
+                    <div className="text-2xl font-bold text-gray-800">100%</div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Strict Confidentiality</div>
                   </div>
                 </div>
               </div>
@@ -99,16 +105,16 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-sky-600">
+      <section className="py-16 bg-indigo-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="p-3 bg-sky-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="h-8 w-8 text-white" />
+                <div className="p-3 bg-indigo-800 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-indigo-700">
+                  <stat.icon className="h-8 w-8 text-indigo-300" />
                 </div>
                 <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-sky-100">{stat.label}</div>
+                <div className="text-indigo-200 text-sm font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -121,19 +127,19 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <img
-                src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="About Us"
-                className="rounded-2xl shadow-xl"
+                src="https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                alt="Therapy Session at DS Clinic"
+                className="rounded-2xl shadow-xl w-full"
               />
             </div>
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-                Why Choose DentalCare?
+                Why Choose DS Clinic?
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                With over 15 years of experience, our clinic combines cutting-edge technology 
-                with compassionate care to deliver exceptional dental treatments. Our team of 
-                specialists is committed to your oral health and comfort.
+                With over 15 years of clinical expertise, DS Clinic is a trusted name in Avadi, Chennai, 
+                for comprehensive mental healthcare. We combine medical expertise with compassionate counseling 
+                to guide our patients towards holistic healing.
               </p>
               
               <div className="space-y-6">
@@ -142,18 +148,18 @@ const Home = () => {
                     <Shield className="h-6 w-6 text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Safe & Sterile</h3>
-                    <p className="text-gray-600">State-of-the-art sterilization and safety protocols ensure your health and peace of mind.</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">100% Confidentiality & Safety</h3>
+                    <p className="text-gray-600">We prioritize patient privacy above all. Every therapy session and medical file is strictly confidential.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-sky-100 rounded-full flex-shrink-0">
-                    <Award className="h-6 w-6 text-sky-600" />
+                  <div className="p-2 bg-indigo-100 rounded-full flex-shrink-0">
+                    <Award className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Expert Team</h3>
-                    <p className="text-gray-600">Board-certified professionals with extensive experience in all aspects of dental care.</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Expert Psychiatric Care</h3>
+                    <p className="text-gray-600">Led by Dr. Nirmal Kumar Seenan, MD in Psychiatry, specializing in neuropsychiatry and de-addiction.</p>
                   </div>
                 </div>
                 
@@ -162,8 +168,8 @@ const Home = () => {
                     <Heart className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Patient-Centered</h3>
-                    <p className="text-gray-600">Personalized treatment plans tailored to your unique needs and comfort preferences.</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Holistic & Patient-Centered</h3>
+                    <p className="text-gray-600">Personalized mental health treatment plans incorporating medical therapy, CBT counseling, and lifestyle support.</p>
                   </div>
                 </div>
               </div>
@@ -177,46 +183,46 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              Our Services
+              Our Key Specializations
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive dental care services to keep your smile healthy and beautiful
+              Professional, highly confidential psychiatric and psychological counseling support
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="p-3 bg-sky-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                <Stethoscope className="h-8 w-8 text-sky-600" />
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <div className="p-3 bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                <Brain className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">General Checkup</h3>
-              <p className="text-gray-600 mb-4">Comprehensive oral examination and cleaning to maintain optimal dental health.</p>
-              <div className="text-2xl font-bold text-sky-600">$80</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">De-addiction Care</h3>
+              <p className="text-gray-600 mb-4">Evidence-based programs helping patients reclaim control over alcohol, chemical, and digital dependencies.</p>
+              <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="p-3 bg-emerald-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                <Star className="h-8 w-8 text-emerald-600" />
+                <Activity className="h-8 w-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Teeth Whitening</h3>
-              <p className="text-gray-600 mb-4">Professional whitening treatment to restore your bright, confident smile.</p>
-              <div className="text-2xl font-bold text-sky-600">$200</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Anxiety & Depression</h3>
+              <p className="text-gray-600 mb-4">Compassionate cognitive therapies and medical stabilization plans for mood disorders.</p>
+              <div className="text-2xl font-bold text-indigo-600">₹300 / session</div>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="p-3 bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
                 <Heart className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Dental Implants</h3>
-              <p className="text-gray-600 mb-4">Permanent tooth replacement solution with titanium implants.</p>
-              <div className="text-2xl font-bold text-sky-600">$1,200</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Sexual Health Concerns</h3>
+              <p className="text-gray-600 mb-4">Confidential consulting and therapeutic assistance for erectile difficulties, loss of libido, and psychosexual anxiety.</p>
+              <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
             </div>
           </div>
           
           <div className="text-center">
             <Link
               to="/services"
-              className="inline-flex items-center px-8 py-4 bg-sky-600 text-white font-medium rounded-lg hover:bg-sky-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               View All Services
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -226,28 +232,28 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-sky-600 to-sky-700">
+      <section className="py-16 bg-gradient-to-r from-indigo-700 to-indigo-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Smile?
+              Take the First Step Towards Mental Wellbeing
             </h2>
-            <p className="text-xl text-sky-100 mb-8">
-              Book your appointment today and experience the difference of quality dental care
+            <p className="text-xl text-indigo-100 mb-8">
+              Book a confidential consultation today and explore specialized psychological therapies and care plans
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/book-appointment"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-sky-600 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
               >
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Appointment
+                <Calendar className="mr-2 h-5 w-5 text-indigo-600" />
+                Book Consultation
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-sky-600 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-indigo-900 transition-all duration-200"
               >
-                Contact Us
+                Contact Clinic
               </Link>
             </div>
           </div>
@@ -262,27 +268,27 @@ const Home = () => {
               What Our Patients Say
             </h2>
             <p className="text-xl text-gray-600">
-              Don't just take our word for it
+              Hear about their recovery and healing journeys
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg">
+              <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-gray-600 mb-6 italic text-sm leading-relaxed">"{testimonial.text}"</p>
                 <div className="flex items-center">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                    className="w-12 h-12 rounded-full mr-4 object-cover border-2 border-indigo-100"
                   />
                   <div>
-                    <div className="font-semibold text-gray-800">{testimonial.name}</div>
+                    <div className="font-semibold text-gray-800 text-sm">{testimonial.name}</div>
                   </div>
                 </div>
               </div>

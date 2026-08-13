@@ -37,9 +37,9 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
   };
 
   const getPriorityColor = (condition: string) => {
-    if (condition.toLowerCase().includes('emergency') || condition.toLowerCase().includes('severe')) {
+    if (condition.toLowerCase().includes('emergency') || condition.toLowerCase().includes('severe') || condition.toLowerCase().includes('crisis')) {
       return 'text-red-600';
-    } else if (condition.toLowerCase().includes('treatment') || condition.toLowerCase().includes('requires')) {
+    } else if (condition.toLowerCase().includes('treatment') || condition.toLowerCase().includes('requires') || condition.toLowerCase().includes('phase')) {
       return 'text-amber-600';
     }
     return 'text-emerald-600';
@@ -49,8 +49,8 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-100">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-sky-100 rounded-full">
-            <User className="h-6 w-6 text-sky-600" />
+          <div className="p-2 bg-indigo-100 rounded-full">
+            <User className="h-6 w-6 text-indigo-600" />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-800">{patient.name}</h3>
@@ -64,8 +64,8 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
 
       <div className="space-y-3 mb-4">
         <div className="flex items-center text-sm text-gray-600">
-          <User className="h-4 w-4 mr-2 text-sky-600" />
-          <span>Assigned to: <span className="font-medium">{patient.assignedNurse}</span></span>
+          <User className="h-4 w-4 mr-2 text-indigo-600" />
+          <span>Counselor: <span className="font-medium">{patient.assignedNurse}</span></span>
         </div>
         
         <div className="flex items-start text-sm">
@@ -74,24 +74,24 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
         </div>
 
         <div className="flex items-center text-sm text-gray-600">
-          <Calendar className="h-4 w-4 mr-2 text-sky-600" />
+          <Calendar className="h-4 w-4 mr-2 text-indigo-600" />
           <span>Last Visit: {new Date(patient.lastVisit).toLocaleDateString()}</span>
         </div>
 
         <div className="flex items-center text-sm text-gray-600">
           <Calendar className="h-4 w-4 mr-2 text-emerald-600" />
-          <span>Next: {new Date(patient.nextAppointment).toLocaleDateString()}</span>
+          <span>Next Visit: {new Date(patient.nextAppointment).toLocaleDateString()}</span>
         </div>
       </div>
 
       <div className="pt-4 border-t border-gray-100">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center text-gray-600">
-            <Phone className="h-4 w-4 mr-2 text-sky-600" />
+            <Phone className="h-4 w-4 mr-2 text-indigo-600" />
             <span>{patient.phone}</span>
           </div>
-          <button className="text-sky-600 hover:text-sky-700 font-medium">
-            View Details
+          <button className="text-indigo-600 hover:text-indigo-700 font-medium">
+            View Case Details
           </button>
         </div>
       </div>

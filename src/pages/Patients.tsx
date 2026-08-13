@@ -39,43 +39,43 @@ const Patients = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-            Patient <span className="text-sky-600">Management</span>
+            Clinical <span className="text-indigo-600">Case Records</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive overview of all patients under our care, with detailed 
-            information about their treatment status and assigned healthcare providers.
+            Secure, coordinated overview of all patients under our active neuropsychiatric care, 
+            counseling, and rehabilitation programs.
           </p>
         </div>
 
         {/* Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100">
             <div className="flex items-center justify-center mb-2">
-              <Users className="h-8 w-8 text-sky-600" />
+              <Users className="h-8 w-8 text-indigo-600" />
             </div>
             <div className="text-2xl font-bold text-gray-800">{stats.total}</div>
-            <div className="text-sm text-gray-600">Total Patients</div>
+            <div className="text-sm text-gray-600">Total Cases</div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100">
             <div className="text-2xl font-bold text-emerald-600">{stats.active}</div>
-            <div className="text-sm text-gray-600">Active</div>
+            <div className="text-sm text-gray-600">Active Therapy</div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100">
             <div className="text-2xl font-bold text-amber-600">{stats.treatment}</div>
-            <div className="text-sm text-gray-600">In Treatment</div>
+            <div className="text-sm text-gray-600">In Rehab Phase</div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100">
             <div className="text-2xl font-bold text-blue-600">{stats.scheduled}</div>
-            <div className="text-sm text-gray-600">Scheduled</div>
+            <div className="text-sm text-gray-600">Scheduled Visit</div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-100">
             <div className="text-2xl font-bold text-purple-600">{stats.monitoring}</div>
             <div className="text-sm text-gray-600">Monitoring</div>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Search */}
             <div className="md:col-span-2">
@@ -88,7 +88,7 @@ const Patients = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by name or condition..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
               />
             </div>
 
@@ -101,7 +101,7 @@ const Patients = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
               >
                 <option value="All">All Statuses</option>
                 {uniqueStatuses.map(status => (
@@ -110,18 +110,18 @@ const Patients = () => {
               </select>
             </div>
 
-            {/* Nurse Filter */}
+            {/* Counselor Filter */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Filter className="h-4 w-4 inline mr-2" />
-                Assigned Nurse
+                Assigned Counselor
               </label>
               <select
                 value={nurseFilter}
                 onChange={(e) => setNurseFilter(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
               >
-                <option value="All">All Nurses</option>
+                <option value="All">All Counselors</option>
                 {uniqueNurses.map(nurse => (
                   <option key={nurse} value={nurse}>{nurse}</option>
                 ))}
@@ -133,7 +133,7 @@ const Patients = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-gray-600">
-            Showing {filteredPatients.length} of {patients.length} patients
+            Showing {filteredPatients.length} of {patients.length} case records
           </p>
         </div>
 
@@ -149,55 +149,55 @@ const Patients = () => {
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="h-12 w-12 text-gray-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">No Patients Found</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">No Records Found</h3>
             <p className="text-gray-600">
-              Try adjusting your search criteria or filters to find more patients.
+              Try adjusting your search criteria or filters to locate the record.
             </p>
           </div>
         )}
 
         {/* Patient Care Information */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
+        <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 border border-gray-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                Comprehensive Patient Care
+                Coordinated Mental Health Care
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Our patient management system ensures that every individual receives 
-                personalized attention and coordinated care from our healthcare team.
+                Our electronic case filing structure enables counselors and psychiatrists to seamlessly collaborate, 
+                revising safety protocols and medication adherence notes in real-time.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-sky-100 rounded-full flex items-center justify-center">
-                    <span className="w-2 h-2 bg-sky-600 rounded-full"></span>
+                  <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
                   </span>
-                  <p className="text-gray-600">Dedicated nurse assignment for continuity of care</p>
+                  <p className="text-gray-600">Coordinated counselor assignment for continuity of therapy</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-sky-100 rounded-full flex items-center justify-center">
-                    <span className="w-2 h-2 bg-sky-600 rounded-full"></span>
+                  <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
                   </span>
-                  <p className="text-gray-600">Regular health monitoring and status updates</p>
+                  <p className="text-gray-600">Regular wellness monitoring and counseling session logs</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-sky-100 rounded-full flex items-center justify-center">
-                    <span className="w-2 h-2 bg-sky-600 rounded-full"></span>
+                  <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
                   </span>
-                  <p className="text-gray-600">Comprehensive medical history tracking</p>
+                  <p className="text-gray-600">Comprehensive, HIPAA-compliant case history tracking</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="flex-shrink-0 w-6 h-6 bg-sky-100 rounded-full flex items-center justify-center">
-                    <span className="w-2 h-2 bg-sky-600 rounded-full"></span>
+                  <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
                   </span>
-                  <p className="text-gray-600">Emergency care and urgent treatment protocols</p>
+                  <p className="text-gray-600">Active crisis intervention protocols and safety plan files</p>
                 </div>
               </div>
             </div>
             <div>
               <img
                 src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop"
-                alt="Patient Care"
+                alt="Psychiatric Case Management"
                 className="rounded-xl shadow-lg w-full"
               />
             </div>

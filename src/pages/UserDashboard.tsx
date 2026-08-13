@@ -6,35 +6,35 @@ const UserDashboard = () => {
   const user = {
     name: "John Smith",
     email: "john.smith@email.com",
-    phone: "+1 (555) 111-1111",
-    memberSince: "2023-01-15"
+    phone: "+91 98840 12345",
+    memberSince: "2026-01-15"
   };
 
   const appointments = [
     {
       id: 1,
-      service: "General Checkup",
-      date: "2024-02-15",
-      time: "10:00 AM",
-      provider: "Emily Rodriguez",
+      service: "Psychiatric Consultation",
+      date: "2026-08-15",
+      time: "6:00 PM",
+      provider: "Dr. Nirmal Kumar Seenan",
       status: "Confirmed",
       type: "upcoming"
     },
     {
       id: 2,
-      service: "Teeth Whitening",
-      date: "2024-01-20",
-      time: "2:30 PM",
-      provider: "Michael Chen",
+      service: "Stress Counseling",
+      date: "2026-07-15",
+      time: "6:30 PM",
+      provider: "Emily Rodriguez",
       status: "Completed",
       type: "past"
     },
     {
       id: 3,
-      service: "Root Canal",
-      date: "2023-12-10",
-      time: "9:00 AM",
-      provider: "Dr. Sarah Johnson",
+      service: "Sleep Disorder Check",
+      date: "2026-06-10",
+      time: "7:00 PM",
+      provider: "Dr. Nirmal Kumar Seenan",
       status: "Completed",
       type: "past"
     }
@@ -75,36 +75,36 @@ const UserDashboard = () => {
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Welcome back, <span className="text-sky-600">{user.name}</span>
+            Welcome back, <span className="text-indigo-600">{user.name}</span>
           </h1>
           <p className="text-xl text-gray-600">
-            Manage your appointments and view your dental health information
+            Manage your appointments and view your clinical treatment records
           </p>
         </div>
 
         {/* User Profile Summary */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-gray-100">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <span className="text-2xl">👤</span>
               </div>
               <div className="font-medium text-gray-800">{user.name}</div>
-              <div className="text-sm text-gray-600">Patient</div>
+              <div className="text-sm text-gray-600">Patient File #1029</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Calendar className="h-8 w-8 text-emerald-600" />
               </div>
               <div className="font-medium text-gray-800">{upcomingAppointments.length}</div>
-              <div className="text-sm text-gray-600">Upcoming Appointments</div>
+              <div className="text-sm text-gray-600">Upcoming Consultations</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <CheckCircle className="h-8 w-8 text-purple-600" />
               </div>
               <div className="font-medium text-gray-800">{pastAppointments.length}</div>
-              <div className="text-sm text-gray-600">Completed Visits</div>
+              <div className="text-sm text-gray-600">Completed Sessions</div>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -113,16 +113,16 @@ const UserDashboard = () => {
               <div className="font-medium text-gray-800">
                 {new Date(user.memberSince).toLocaleDateString()}
               </div>
-              <div className="text-sm text-gray-600">Member Since</div>
+              <div className="text-sm text-gray-600">Registered Since</div>
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <button className="bg-sky-600 text-white p-6 rounded-xl shadow-lg hover:bg-sky-700 transition-colors duration-200 text-center">
+          <button className="bg-indigo-600 text-white p-6 rounded-xl shadow-lg hover:bg-indigo-700 transition-colors duration-200 text-center">
             <Calendar className="h-8 w-8 mx-auto mb-2" />
-            <div className="font-semibold">Book New Appointment</div>
+            <div className="font-semibold">Book Consultation</div>
           </button>
           <button className="bg-emerald-600 text-white p-6 rounded-xl shadow-lg hover:bg-emerald-700 transition-colors duration-200 text-center">
             <Phone className="h-8 w-8 mx-auto mb-2" />
@@ -130,13 +130,13 @@ const UserDashboard = () => {
           </button>
           <button className="bg-purple-600 text-white p-6 rounded-xl shadow-lg hover:bg-purple-700 transition-colors duration-200 text-center">
             <MapPin className="h-8 w-8 mx-auto mb-2" />
-            <div className="font-semibold">Get Directions</div>
+            <div className="font-semibold">Find Location</div>
           </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Upcoming Appointments */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Upcoming Appointments</h2>
             {upcomingAppointments.length > 0 ? (
               <div className="space-y-4">
@@ -154,20 +154,20 @@ const UserDashboard = () => {
                     
                     <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2 text-sky-600" />
+                        <Calendar className="h-4 w-4 mr-2 text-indigo-600" />
                         {new Date(appointment.date).toLocaleDateString()}
                       </div>
                       <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-2 text-sky-600" />
+                        <Clock className="h-4 w-4 mr-2 text-indigo-600" />
                         {appointment.time}
                       </div>
                     </div>
                     
                     <div className="mt-4 flex space-x-3">
-                      <button className="text-sm text-sky-600 hover:text-sky-700 font-medium">
+                      <button className="text-sm text-indigo-600 hover:text-indigo-700 font-semibold">
                         Reschedule
                       </button>
-                      <button className="text-sm text-red-600 hover:text-red-700 font-medium">
+                      <button className="text-sm text-red-600 hover:text-red-700 font-semibold">
                         Cancel
                       </button>
                     </div>
@@ -178,8 +178,8 @@ const UserDashboard = () => {
               <div className="text-center py-8">
                 <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-800 mb-2">No Upcoming Appointments</h3>
-                <p className="text-gray-600 mb-4">Schedule your next visit to maintain your oral health</p>
-                <button className="bg-sky-600 text-white px-6 py-2 rounded-lg hover:bg-sky-700 transition-colors">
+                <p className="text-gray-600 mb-4">Schedule your next session to support your mental wellbeing</p>
+                <button className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
                   Book Appointment
                 </button>
               </div>
@@ -187,7 +187,7 @@ const UserDashboard = () => {
           </div>
 
           {/* Appointment History */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Appointment History</h2>
             <div className="space-y-4 max-h-96 overflow-y-auto">
               {pastAppointments.map((appointment) => (
@@ -219,25 +219,25 @@ const UserDashboard = () => {
         </div>
 
         {/* Health Reminders */}
-        <div className="mt-8 bg-sky-50 border border-sky-200 rounded-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Health Reminders</h2>
+        <div className="mt-8 bg-indigo-50 border border-indigo-200 rounded-xl p-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Wellness Reminders</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🦷</span>
+              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🧠</span>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">Regular Cleaning Due</h3>
-                <p className="text-sm text-gray-600">Your next cleaning is recommended by March 15, 2024</p>
+                <h3 className="font-semibold text-gray-800">CBT Sessions Due</h3>
+                <p className="text-sm text-gray-600">Your next cognitive behavioral therapy follow-up is recommended soon.</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🧴</span>
+                <span className="text-2xl">🧘</span>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">Daily Oral Care</h3>
-                <p className="text-sm text-gray-600">Remember to brush twice daily and floss regularly</p>
+                <h3 className="font-semibold text-gray-800">Mindfulness Practice</h3>
+                <p className="text-sm text-gray-600">Try to dedicate 10-15 minutes daily to breathing exercises and sleep routine.</p>
               </div>
             </div>
           </div>

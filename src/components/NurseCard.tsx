@@ -32,25 +32,25 @@ const NurseCard: React.FC<NurseCardProps> = ({ nurse }) => {
       
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-800 mb-1">{nurse.name}</h3>
-        <p className="text-sky-600 font-medium mb-1">{nurse.title}</p>
+        <p className="text-indigo-600 font-medium mb-1">{nurse.title}</p>
         <p className="text-gray-600 text-sm mb-4">{nurse.specialization}</p>
 
         <div className="flex items-center justify-between mb-4 p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center">
-            <Users className="h-5 w-5 text-sky-600 mr-2" />
-            <span className="text-sm text-gray-600">Assigned Patients</span>
+            <Users className="h-5 w-5 text-indigo-600 mr-2" />
+            <span className="text-sm text-gray-600">Active Case Files</span>
           </div>
-          <span className="font-semibold text-sky-600">{nurse.assignedPatients}</span>
+          <span className="font-semibold text-indigo-600">{nurse.assignedPatients}</span>
         </div>
 
         <div className="mb-4">
           <div className="flex items-center mb-2">
-            <Award className="h-4 w-4 text-sky-600 mr-2" />
+            <Award className="h-4 w-4 text-indigo-600 mr-2" />
             <span className="text-sm font-medium text-gray-700">Certifications</span>
           </div>
           <div className="flex flex-wrap gap-1">
             {nurse.certifications.map((cert, index) => (
-              <span key={index} className="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full">
+              <span key={index} className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">
                 {cert}
               </span>
             ))}
@@ -60,14 +60,14 @@ const NurseCard: React.FC<NurseCardProps> = ({ nurse }) => {
         <div className="space-y-2 text-sm">
           <a 
             href={`mailto:${nurse.email}`} 
-            className="flex items-center text-gray-600 hover:text-sky-600 transition-colors"
+            className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
           >
             <Mail className="h-4 w-4 mr-2" />
             {nurse.email}
           </a>
           <a 
             href={`tel:${nurse.phone}`} 
-            className="flex items-center text-gray-600 hover:text-sky-600 transition-colors"
+            className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors"
           >
             <Phone className="h-4 w-4 mr-2" />
             {nurse.phone}

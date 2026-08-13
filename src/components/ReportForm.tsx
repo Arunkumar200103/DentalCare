@@ -18,7 +18,6 @@ const ReportForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send data to backend
     console.log('Report submitted:', formData);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
@@ -46,18 +45,18 @@ const ReportForm = () => {
 
   if (showSuccess) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
+      <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto border border-gray-100">
         <div className="text-center">
           <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <FileText className="h-8 w-8 text-emerald-600" />
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-2">Report Submitted!</h3>
           <p className="text-gray-600 mb-6">
-            The patient report has been successfully submitted for doctor review.
+            The clinical patient report has been successfully submitted for Doctor review.
           </p>
           <button 
             onClick={() => setShowSuccess(false)}
-            className="bg-sky-600 text-white px-6 py-2 rounded-lg hover:bg-sky-700 transition-colors"
+            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
           >
             Submit Another Report
           </button>
@@ -67,14 +66,14 @@ const ReportForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Patient Health Report</h2>
+    <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto border border-gray-100">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Clinical Case Report</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Patient Selection */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            <User className="h-4 w-4 inline mr-2" />
+            <User className="h-4 w-4 inline mr-2 text-indigo-600" />
             Select Patient *
           </label>
           <select
@@ -82,7 +81,7 @@ const ReportForm = () => {
             value={formData.patientId}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           >
             <option value="">Choose a patient</option>
             {patients.map((patient) => (
@@ -94,12 +93,12 @@ const ReportForm = () => {
         </div>
 
         {selectedPatient && (
-          <div className="bg-sky-50 border border-sky-200 rounded-lg p-4">
-            <h3 className="font-medium text-sky-800 mb-2">Patient Information</h3>
-            <div className="text-sm text-sky-700 space-y-1">
-              <p><strong>Current Condition:</strong> {selectedPatient.currentCondition}</p>
-              <p><strong>Allergies:</strong> {selectedPatient.allergies}</p>
-              <p><strong>Last Visit:</strong> {new Date(selectedPatient.lastVisit).toLocaleDateString()}</p>
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+            <h3 className="font-semibold text-indigo-800 mb-2">Patient Case Summary</h3>
+            <div className="text-sm text-indigo-700 space-y-1">
+              <p><strong>Current Specialization Category:</strong> {selectedPatient.currentCondition}</p>
+              <p><strong>Known Allergies/Sensitivities:</strong> {selectedPatient.allergies}</p>
+              <p><strong>Last Session Date:</strong> {new Date(selectedPatient.lastVisit).toLocaleDateString()}</p>
             </div>
           </div>
         )}
@@ -107,7 +106,7 @@ const ReportForm = () => {
         {/* Observations */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Patient Observations *
+            Patient Observations & Mental State Checklist *
           </label>
           <textarea
             name="observations"
@@ -115,14 +114,14 @@ const ReportForm = () => {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-            placeholder="Describe patient's condition, complaints, and overall appearance..."
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="Describe behavioral observations, speech pattern, mood affect, and current complaints..."
           />
         </div>
 
         {/* Vital Signs */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Vital Signs</h3>
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Vital Signs</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -133,7 +132,7 @@ const ReportForm = () => {
                 name="bloodPressure"
                 value={formData.bloodPressure}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="120/80"
               />
             </div>
@@ -147,7 +146,7 @@ const ReportForm = () => {
                 name="temperature"
                 value={formData.temperature}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="98.6°F"
               />
             </div>
@@ -161,7 +160,7 @@ const ReportForm = () => {
                 name="pulse"
                 value={formData.pulse}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                 placeholder="72"
               />
             </div>
@@ -171,22 +170,22 @@ const ReportForm = () => {
         {/* Procedures Performed */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Procedures Performed
+            Interventions / Assessments Performed
           </label>
           <textarea
             name="procedures"
             value={formData.procedures}
             onChange={handleChange}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-            placeholder="List all procedures and tests performed during this visit..."
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="List any psychometric scales, cognitive therapy protocols, or counseling exercises conducted..."
           />
         </div>
 
         {/* Findings */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Clinical Findings *
+            Clinical Findings / Assessment *
           </label>
           <textarea
             name="findings"
@@ -194,15 +193,15 @@ const ReportForm = () => {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-            placeholder="Describe clinical findings, diagnoses, and assessment..."
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="Describe therapist findings, cognitive trends, or behavioral milestones..."
           />
         </div>
 
         {/* Recommendations */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Treatment Recommendations *
+            Treatment & Relapse Prevention Recommendations *
           </label>
           <textarea
             name="recommendations"
@@ -210,15 +209,15 @@ const ReportForm = () => {
             onChange={handleChange}
             required
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-            placeholder="Recommend treatment plan, medications, follow-up care..."
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="Recommend follow-up tasks, home relaxation exercises, coping strategies..."
           />
         </div>
 
         {/* Priority Level */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            <AlertTriangle className="h-4 w-4 inline mr-2" />
+            <AlertTriangle className="h-4 w-4 inline mr-2 text-indigo-600" />
             Priority Level *
           </label>
           <select
@@ -226,11 +225,11 @@ const ReportForm = () => {
             value={formData.priority}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           >
-            <option value="Low">Low - Routine care</option>
-            <option value="Medium">Medium - Standard follow-up</option>
-            <option value="High">High - Urgent attention needed</option>
+            <option value="Low">Low - Routine follow-up</option>
+            <option value="Medium">Medium - Standard care tracking</option>
+            <option value="High">High - Urgent clinical/crisis check needed</option>
           </select>
         </div>
 
@@ -238,9 +237,9 @@ const ReportForm = () => {
         <div className="flex gap-4">
           <button
             type="submit"
-            className="flex-1 bg-sky-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-sky-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+            className="flex-1 bg-indigo-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-md hover:shadow-lg"
           >
-            Submit Report
+            Submit Case Report
           </button>
           <button
             type="button"

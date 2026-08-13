@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { mockUsers, MockUser } from "../data/mockUsers";
-import { Stethoscope } from "lucide-react";
+import { Brain } from "lucide-react";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -26,16 +26,17 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sky-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-indigo-100 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
         {/* Logo */}
-        <div className="flex items-center justify-center space-x-2 mb-6">
-          <Stethoscope className="h-8 w-8 text-sky-600" />
-          <h1 className="text-2xl font-bold text-gray-800">DentalCare</h1>
+        <div className="flex flex-col items-center justify-center space-y-2 mb-6">
+          <Brain className="h-10 w-10 text-indigo-600 animate-pulse" />
+          <h1 className="text-2xl font-bold text-gray-800">DS Clinic</h1>
+          <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Neuropsychiatry & De-addiction</span>
         </div>
 
         <h2 className="text-xl font-semibold text-center text-gray-700 mb-6">
-          Sign in to your account
+          Sign in to Clinical System
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -49,7 +50,7 @@ const Login: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="mt-1 w-full rounded-lg border-gray-300 focus:border-sky-500 focus:ring-sky-500 p-2"
+              className="mt-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 p-2"
               required
             />
           </div>
@@ -64,7 +65,7 @@ const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="mt-1 w-full rounded-lg border-gray-300 focus:border-sky-500 focus:ring-sky-500 p-2"
+              className="mt-1 w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 p-2"
               required
             />
           </div>
@@ -73,26 +74,26 @@ const Login: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700 transition-colors font-medium"
+            className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-md hover:shadow-lg"
           >
             Login
           </button>
         </form>
 
         {/* Demo accounts */}
-        <div className="mt-8 bg-sky-50 rounded-lg p-4">
-          <p className="text-sm text-gray-700 font-semibold mb-2">
-            Demo Accounts
+        <div className="mt-8 bg-indigo-50 rounded-lg p-4 border border-indigo-100">
+          <p className="text-sm text-indigo-900 font-semibold mb-2">
+            Clinical Portal - Demo Credentials
           </p>
-          <ul className="text-sm text-gray-600 space-y-1">
+          <ul className="text-xs text-indigo-700 space-y-1.5">
             <li>
-              <span className="font-medium">User</span> – alice@demo.com / 123
+              <span className="font-semibold">Patient (User):</span> alice@demo.com / 123
             </li>
             <li>
-              <span className="font-medium">Nurse</span> – nurse@demo.com / 123
+              <span className="font-semibold">Counselor (Nurse):</span> nurse@demo.com / 123
             </li>
             <li>
-              <span className="font-medium">Doctor</span> – doc@demo.com / 123
+              <span className="font-semibold">Chief Psychiatrist (Doctor):</span> doc@demo.com / 123
             </li>
           </ul>
         </div>

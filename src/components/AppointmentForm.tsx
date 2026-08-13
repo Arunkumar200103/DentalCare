@@ -17,7 +17,6 @@ const AppointmentForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send data to backend
     console.log('Appointment booked:', formData);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
@@ -31,7 +30,7 @@ const AppointmentForm = () => {
   };
 
   const timeSlots = [
-    '9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'
+    '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'
   ];
 
   if (showSuccess) {
@@ -56,7 +55,7 @@ const AppointmentForm = () => {
           </div>
           <button 
             onClick={() => setShowSuccess(false)}
-            className="bg-sky-600 text-white px-6 py-2 rounded-lg hover:bg-sky-700 transition-colors"
+            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Book Another Appointment
           </button>
@@ -83,7 +82,7 @@ const AppointmentForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
               placeholder="Enter your full name"
             />
           </div>
@@ -99,7 +98,7 @@ const AppointmentForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
               placeholder="Enter your email"
             />
           </div>
@@ -116,7 +115,7 @@ const AppointmentForm = () => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
             placeholder="Enter your phone number"
           />
         </div>
@@ -131,7 +130,7 @@ const AppointmentForm = () => {
             value={formData.service}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           >
             <option value="">Select a service</option>
             {services.map((service) => (
@@ -145,15 +144,15 @@ const AppointmentForm = () => {
         {/* Staff Selection */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Staff Member
+            Preferred Counselor / Staff
           </label>
           <select
             name="nurse"
             value={formData.nurse}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           >
-            <option value="">No preference</option>
+            <option value="">No preference (Assign Doctor / Specialist)</option>
             {nurses.map((nurse) => (
               <option key={nurse.id} value={nurse.id.toString()}>
                 {nurse.name} - {nurse.title}
@@ -176,7 +175,7 @@ const AppointmentForm = () => {
               onChange={handleChange}
               required
               min={new Date().toISOString().split('T')[0]}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
             />
           </div>
           
@@ -190,7 +189,7 @@ const AppointmentForm = () => {
               value={formData.time}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
             >
               <option value="">Select a time</option>
               {timeSlots.map((time) => (
@@ -203,7 +202,7 @@ const AppointmentForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-sky-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-sky-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+          className="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-200 shadow-md hover:shadow-lg"
         >
           Book Appointment
         </button>

@@ -5,7 +5,12 @@ import {
   Activity, 
   PlusCircle, 
   AlignCenter, 
-  Zap 
+  Zap,
+  Brain,
+  Moon,
+  Shield,
+  Heart,
+  Smile
 } from 'lucide-react';
 
 const iconMap = {
@@ -14,7 +19,12 @@ const iconMap = {
   activity: Activity,
   'plus-circle': PlusCircle,
   'align-center': AlignCenter,
-  zap: Zap
+  zap: Zap,
+  brain: Brain,
+  moon: Moon,
+  shield: Shield,
+  heart: Heart,
+  smile: Smile
 };
 
 interface ServiceCardProps {
@@ -34,19 +44,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-100">
       <div className="flex items-center justify-between mb-4">
-        <div className="p-3 bg-sky-100 rounded-lg">
-          <IconComponent className="h-8 w-8 text-sky-600" />
+        <div className="p-3 bg-indigo-100 rounded-lg">
+          <IconComponent className="h-8 w-8 text-indigo-600" />
         </div>
         <div className="text-right">
-          <div className="text-2xl font-bold text-sky-600">{service.price}</div>
+          <div className="text-2xl font-bold text-indigo-600">{service.price}</div>
           <div className="text-sm text-gray-500">{service.duration}</div>
         </div>
       </div>
       
-      <h3 className="text-xl font-semibold text-gray-800 mb-3">{service.name}</h3>
+      <h3 className="text-xl font-bold text-gray-800 mb-3">{service.name}</h3>
       <p className="text-gray-600 leading-relaxed">{service.description}</p>
       
-      <button className="w-full mt-6 bg-sky-600 text-white py-3 px-4 rounded-lg hover:bg-sky-700 transition-colors duration-200 font-medium">
+      <button className="w-full mt-6 bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-semibold shadow-md">
         Book This Service
       </button>
     </div>

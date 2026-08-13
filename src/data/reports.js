@@ -5,19 +5,19 @@ export const reports = [
     patientName: "John Smith",
     nurseId: 1,
     nurseName: "Emily Rodriguez",
-    date: "2024-01-15",
+    date: "2026-08-01",
     time: "10:30 AM",
-    observations: "Patient arrived for routine cleaning. No complaints of pain or sensitivity. Oral hygiene appears good with minimal plaque buildup.",
+    observations: "Patient arrived for cognitive behavioral therapy session. Reports stable mood, minor work-related stress but no depressive episodes. Good sleep hygiene.",
     vitals: {
       bloodPressure: "120/80",
       temperature: "98.6°F",
       pulse: "72 bpm"
     },
-    procedures: ["Dental cleaning", "Fluoride treatment", "Oral examination"],
-    findings: "Overall oral health is excellent. Small amount of tartar on lower molars removed during cleaning.",
-    recommendations: "Continue current oral hygiene routine. Schedule next cleaning in 6 months.",
+    procedures: ["Cognitive Behavioral Therapy (CBT)", "Mental State Examination (MSE)", "Progress Review"],
+    findings: "Overall psychological status is stable. Good progress with stress management techniques and self-reporting logs.",
+    recommendations: "Continue daily mindfulness practice. Schedule next therapy session in 2 weeks.",
     status: "Approved",
-    doctorFeedback: "Excellent work. Patient can continue regular maintenance schedule.",
+    doctorFeedback: "Excellent progress. Patient can continue regular counseling and maintenance schedule.",
     priority: "Low"
   },
   {
@@ -26,17 +26,17 @@ export const reports = [
     patientName: "Maria Garcia",
     nurseId: 2,
     nurseName: "Michael Chen",
-    date: "2024-01-10",
+    date: "2026-08-05",
     time: "2:15 PM",
-    observations: "Patient reports severe pain in upper right molar. Sensitivity to hot and cold. Pain level 7/10.",
+    observations: "Patient reports severe anxiety symptoms and a panic attack episode last night. High state of distress, difficulty sleeping, palpitations. Anxiety rating 8/10.",
     vitals: {
-      bloodPressure: "130/85",
+      bloodPressure: "135/85",
       temperature: "99.1°F",
-      pulse: "78 bpm"
+      pulse: "88 bpm"
     },
-    procedures: ["Digital X-ray", "Percussion test", "Cold sensitivity test"],
-    findings: "Deep cavity detected in tooth #3. Possible pulp involvement. Root canal therapy recommended.",
-    recommendations: "Schedule urgent root canal treatment. Prescribe pain medication for immediate relief.",
+    procedures: ["Anxiety Rating Scale (GAD-7)", "Panic Protocol Review", "Crisis Counseling Session"],
+    findings: "Acute anxiety exacerbation. Triggers identified as high job demands and irregular evening medication compliance.",
+    recommendations: "Schedule urgent doctor review for potential medication adjustment. Focus next therapy sessions on acute panic breathing control.",
     status: "Pending Review",
     doctorFeedback: "",
     priority: "High"
@@ -47,19 +47,19 @@ export const reports = [
     patientName: "David Lee",
     nurseId: 3,
     nurseName: "Lisa Thompson",
-    date: "2024-01-08",
+    date: "2026-07-28",
     time: "11:00 AM",
-    observations: "Pre-surgical consultation for dental implant. Patient is anxious but ready to proceed. Healing from previous extraction is complete.",
+    observations: "Patient in outpatient de-addiction recovery program. Completed 30 days of sobriety. Experiencing mild cravings but utilizing coping cards effectively.",
     vitals: {
       bloodPressure: "125/82",
       temperature: "98.4°F",
       pulse: "70 bpm"
     },
-    procedures: ["3D imaging", "Implant site measurement", "Pre-surgical assessment"],
-    findings: "Adequate bone density for implant placement. Site #14 fully healed and ready for implant surgery.",
-    recommendations: "Schedule implant surgery. Provide pre-operative instructions and antibiotic prophylaxis.",
+    procedures: ["Cravings Assessment", "Relapse Prevention Plan Update", "Urine Toxicology Screen"],
+    findings: "Toxicology screen negative for all substances. Strong cognitive resolve. Active participation in support group.",
+    recommendations: "Continue outpatient group twice weekly. Maintain daily activity structure and sponsor contact.",
     status: "Approved",
-    doctorFeedback: "Patient cleared for implant surgery. Schedule for next available slot.",
+    doctorFeedback: "Outstanding sobriety milestone. Keep up the relapse prevention counseling.",
     priority: "Medium"
   },
   {
@@ -68,19 +68,19 @@ export const reports = [
     patientName: "Sarah Johnson",
     nurseId: 4,
     nurseName: "James Wilson",
-    date: "2024-01-12",
+    date: "2026-08-02",
     time: "4:30 PM",
-    observations: "Monthly orthodontic adjustment. Patient compliant with treatment. No broken brackets or loose wires.",
+    observations: "Family counseling session with spouse. Improved interpersonal communication reported. Patient compliant with daily medication plan.",
     vitals: {
       bloodPressure: "110/70",
       temperature: "98.2°F",
       pulse: "68 bpm"
     },
-    procedures: ["Bracket inspection", "Wire adjustment", "Progress photos"],
-    findings: "Good progress in tooth movement. Upper arch alignment improving significantly. No complications.",
-    recommendations: "Continue current treatment plan. Schedule next adjustment in 4 weeks.",
+    procedures: ["Systemic Family Therapy", "Conflict Resolution Training", "Compliance Monitoring"],
+    findings: "Reduced domestic tension. Spouse feels more supported and understands the recovery timeline better.",
+    recommendations: "Continue monthly family counseling sessions. Reinforce daily boundary setting guidelines.",
     status: "Approved",
-    doctorFeedback: "Excellent progress. Treatment on track for completion in 6 months.",
+    doctorFeedback: "Excellent family alignment. Re-integrate social support into therapeutic goal checklist.",
     priority: "Low"
   }
 ];
