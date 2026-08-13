@@ -12,7 +12,6 @@ import {
   Clock,
   Activity
 } from 'lucide-react';
-import clinicHero from '../img/clinic_hero.png';
 
 const Home = () => {
   const testimonials = [
@@ -59,7 +58,7 @@ const Home = () => {
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Your Mental Health,{' '}
-                <span className="text-indigo-600">Our Commited Priority</span>
+                <span className="text-indigo-600">Our Committed Priority</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Experience compassionate, evidence-based psychiatric and counseling care. 
@@ -69,14 +68,14 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/book-appointment"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Book Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 font-medium rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
                 >
                   Explore Services
                 </Link>
@@ -84,8 +83,8 @@ const Home = () => {
             </div>
             <div className="relative">
               <img
-                src={clinicHero}
-                alt="DS Clinic Consultation Room"
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmzcyyvzS59XXBXrTNTCRvn7ug8IOnXRQo88EG7dphUJBERxNSxGmiMqIA2G8LLeEIjcDrXJLVwmMEiKjIQXmLT1nqbSluKV4uSZaT6hdlYr0r7fpL3QRuYCzzbgUg3V9oklLxvgz_nkn0p=w1000"
+                alt="DS Clinic Avadi Entrance Board"
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
@@ -114,7 +113,7 @@ const Home = () => {
                   <stat.icon className="h-8 w-8 text-indigo-300" />
                 </div>
                 <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-indigo-200 text-sm font-medium">{stat.label}</div>
+                <div className="text-indigo-200 text-sm font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -127,9 +126,9 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <img
-                src="https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="Therapy Session at DS Clinic"
-                className="rounded-2xl shadow-xl w-full"
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm3xbXU_Wp9XvOjeNEb0kWOlOaA_yPp3k2Htux50zi5PTSigsT_gC7t1mUuubCI3NtuUtWLt8mfU8imPiBwN0SQ6ANGzHphQbYFDWiF2unYWbssjeMCZwOvmIALF7KccegSjuOBAYmREa4=w1000"
+                alt="Dr. Nirmal Kumar Seenan Clinic Board details"
+                className="rounded-2xl shadow-xl w-full object-cover border border-gray-100"
               />
             </div>
             <div>
@@ -148,7 +147,7 @@ const Home = () => {
                     <Shield className="h-6 w-6 text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">100% Confidentiality & Safety</h3>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">100% Confidentiality & Safety</h3>
                     <p className="text-gray-600">We prioritize patient privacy above all. Every therapy session and medical file is strictly confidential.</p>
                   </div>
                 </div>
@@ -158,7 +157,7 @@ const Home = () => {
                     <Award className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Expert Psychiatric Care</h3>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Expert Psychiatric Care</h3>
                     <p className="text-gray-600">Led by Dr. Nirmal Kumar Seenan, MD in Psychiatry, specializing in neuropsychiatry and de-addiction.</p>
                   </div>
                 </div>
@@ -168,7 +167,7 @@ const Home = () => {
                     <Heart className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">Holistic & Patient-Centered</h3>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Holistic & Patient-Centered</h3>
                     <p className="text-gray-600">Personalized mental health treatment plans incorporating medical therapy, CBT counseling, and lifestyle support.</p>
                   </div>
                 </div>
@@ -195,7 +194,7 @@ const Home = () => {
               <div className="p-3 bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
                 <Brain className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">De-addiction Care</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">De-addiction Care</h3>
               <p className="text-gray-600 mb-4">Evidence-based programs helping patients reclaim control over alcohol, chemical, and digital dependencies.</p>
               <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
             </div>
@@ -204,7 +203,7 @@ const Home = () => {
               <div className="p-3 bg-emerald-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
                 <Activity className="h-8 w-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Anxiety & Depression</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Anxiety & Depression</h3>
               <p className="text-gray-600 mb-4">Compassionate cognitive therapies and medical stabilization plans for mood disorders.</p>
               <div className="text-2xl font-bold text-indigo-600">₹300 / session</div>
             </div>
@@ -213,7 +212,7 @@ const Home = () => {
               <div className="p-3 bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
                 <Heart className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Sexual Health Concerns</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Sexual Health Concerns</h3>
               <p className="text-gray-600 mb-4">Confidential consulting and therapeutic assistance for erectile difficulties, loss of libido, and psychosexual anxiety.</p>
               <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
             </div>
@@ -222,11 +221,60 @@ const Home = () => {
           <div className="text-center">
             <Link
               to="/services"
-              className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               View All Services
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Clinic Gallery Section */}
+      <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+              Our Clinic Facility
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Take a look inside DS Clinic in Avadi, Chennai—providing a clean, quiet, and supportive environment for your wellness journey.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <img
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmzcyyvzS59XXBXrTNTCRvn7ug8IOnXRQo88EG7dphUJBERxNSxGmiMqIA2G8LLeEIjcDrXJLVwmMEiKjIQXmLT1nqbSluKV4uSZaT6hdlYr0r7fpL3QRuYCzzbgUg3V9oklLxvgz_nkn0p=w800"
+                alt="DS Clinic Main Board Entrance"
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-4 bg-gray-50 border-t border-gray-100">
+                <p className="font-bold text-gray-700 text-center">Clinic Entrance & Main Board</p>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <img
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm3xbXU_Wp9XvOjeNEb0kWOlOaA_yPp3k2Htux50zi5PTSigsT_gC7t1mUuubCI3NtuUtWLt8mfU8imPiBwN0SQ6ANGzHphQbYFDWiF2unYWbssjeMCZwOvmIALF7KccegSjuOBAYmREa4=w800"
+                alt="Dr. Nirmal Kumar Seenan Qualification nameboard"
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-4 bg-gray-50 border-t border-gray-100">
+                <p className="font-bold text-gray-700 text-center">Consulting Qualifications & Timings</p>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <img
+                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmbWbqDGZ3HTLedEHhrg3Nf-vlNyJxkdg9llL0JbnsmR5PcFuf_SIKufaSCjkk6lfllEcSyLmXcUjx4w2gDFqy-CwkNQA0St4Tg8zmJSGFdLtPGRjxsLljdksMOl7nyi_cinNcidXVIJjiE=w800"
+                alt="DS Clinic Consulting Room"
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="p-4 bg-gray-50 border-t border-gray-100">
+                <p className="font-bold text-gray-700 text-center">Diagnostics & Consulting Room</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -244,14 +292,14 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/book-appointment"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-900 font-bold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
               >
                 <Calendar className="mr-2 h-5 w-5 text-indigo-600" />
                 Book Consultation
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-indigo-900 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-900 transition-all duration-200"
               >
                 Contact Clinic
               </Link>
