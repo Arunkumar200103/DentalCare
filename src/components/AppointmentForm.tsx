@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, User, Mail, Phone } from 'lucide-react';
-import { services } from '../data/services';
-import { nurses } from '../data/nurses';
+import { Calendar, Clock, User, Mail, Phone, ArrowRight } from 'lucide-react';
 
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +7,7 @@ const AppointmentForm = () => {
     email: '',
     phone: '',
     service: '',
-    nurse: '',
+    doctor: '',
     date: '',
     time: ''
   });
@@ -20,6 +18,7 @@ const AppointmentForm = () => {
     console.log('Appointment booked:', formData);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
+    setFormData({ name: '', email: '', phone: '', service: '', doctor: '', date: '', time: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -33,47 +32,49 @@ const AppointmentForm = () => {
     '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'
   ];
 
+  const services = [
+    "Neurology & Psychiatry Consultation",
+    "De-addiction Therapy",
+    "Anxiety & Depression Management",
+    "Diabetology & Endocrinology",
+    "General Medicine Check-up",
+    "Lifestyle & Nutritional Counseling"
+  ];
+
+  const doctors = [
+    "Dr. Nirmal Kumar Seenan (Neuro & Psychiatry)",
+    "Dr. Shylaja Nirmal (Diabetology & Gen. Medicine)"
+  ];
+
   if (showSuccess) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
-        <div className="text-center">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Calendar className="h-8 w-8 text-emerald-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Appointment Booked!</h3>
-          <p className="text-gray-600 mb-6">
-            Your appointment has been successfully scheduled. We'll send you a confirmation email shortly.
-          </p>
-          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6">
-            <h4 className="font-medium text-emerald-800 mb-2">Appointment Details:</h4>
-            <div className="text-sm text-emerald-700 space-y-1">
-              <p><strong>Service:</strong> {services.find(s => s.id.toString() === formData.service)?.name}</p>
-              <p><strong>Date:</strong> {new Date(formData.date).toLocaleDateString()}</p>
-              <p><strong>Time:</strong> {formData.time}</p>
-              <p><strong>Provider:</strong> {nurses.find(n => n.id.toString() === formData.nurse)?.name}</p>
-            </div>
-          </div>
-          <button 
-            onClick={() => setShowSuccess(false)}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
-          >
-            Book Another Appointment
-          </button>
+      <div className="bg-white rounded-[24px] shadow-sm p-10 max-w-2xl mx-auto border border-slate-200 text-center relative overflow-hidden">
+        <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-primary-100">
+          <Calendar className="h-8 w-8 text-primary-900" />
         </div>
+        <h3 className="text-2xl font-bold text-slate-900 mb-3">Appointment Booked!</h3>
+        <p className="text-slate-600 mb-8 font-medium text-[15px] max-w-md mx-auto leading-relaxed">
+          Your appointment has been successfully scheduled. We'll send you a confirmation email shortly.
+        </p>
+        <button 
+          onClick={() => setShowSuccess(false)}
+          className="bg-primary-900 text-white px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors font-semibold shadow-sm hover:-translate-y-0.5"
+        >
+          Book Another Appointment
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Book Your Appointment</h2>
+    <div className="bg-white rounded-[24px] shadow-sm p-8 lg:p-12 max-w-3xl mx-auto border border-slate-200 relative overflow-hidden">
+      <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Secure Your Appointment</h2>
       
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Personal Information */}
+      <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <User className="h-4 w-4 inline mr-2" />
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              <User className="h-4 w-4 inline mr-1.5 text-primary-600 pb-0.5" />
               Full Name *
             </label>
             <input
@@ -82,14 +83,14 @@ const AppointmentForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 placeholder:text-slate-400 outline-none"
               placeholder="Enter your full name"
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Mail className="h-4 w-4 inline mr-2" />
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              <Mail className="h-4 w-4 inline mr-1.5 text-primary-600 pb-0.5" />
               Email Address *
             </label>
             <input
@@ -98,15 +99,15 @@ const AppointmentForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 placeholder:text-slate-400 outline-none"
               placeholder="Enter your email"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            <Phone className="h-4 w-4 inline mr-2" />
+          <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+            <Phone className="h-4 w-4 inline mr-1.5 text-primary-600 pb-0.5" />
             Phone Number *
           </label>
           <input
@@ -115,57 +116,56 @@ const AppointmentForm = () => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 placeholder:text-slate-400 outline-none"
             placeholder="Enter your phone number"
           />
         </div>
 
-        {/* Service Selection */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Service Required *
-          </label>
-          <select
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-          >
-            <option value="">Select a service</option>
-            {services.map((service) => (
-              <option key={service.id} value={service.id.toString()}>
-                {service.name} - {service.price}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Staff Selection */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Counselor / Staff
-          </label>
-          <select
-            name="nurse"
-            value={formData.nurse}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-          >
-            <option value="">No preference (Assign Doctor / Specialist)</option>
-            {nurses.map((nurse) => (
-              <option key={nurse.id} value={nurse.id.toString()}>
-                {nurse.name} - {nurse.title}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Date and Time */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Calendar className="h-4 w-4 inline mr-2" />
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              Service Required *
+            </label>
+            <select
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 outline-none"
+            >
+              <option value="">Select a service</option>
+              {services.map((service) => (
+                <option key={service} value={service}>
+                  {service}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              Preferred Specialist
+            </label>
+            <select
+              name="doctor"
+              value={formData.doctor}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 outline-none"
+            >
+              <option value="">No preference</option>
+              {doctors.map((doc) => (
+                <option key={doc} value={doc}>
+                  {doc}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              <Calendar className="h-4 w-4 inline mr-1.5 text-primary-600 pb-0.5" />
               Preferred Date *
             </label>
             <input
@@ -175,13 +175,13 @@ const AppointmentForm = () => {
               onChange={handleChange}
               required
               min={new Date().toISOString().split('T')[0]}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 outline-none"
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Clock className="h-4 w-4 inline mr-2" />
+            <label className="block text-[13px] font-bold text-slate-700 mb-2 uppercase tracking-wide">
+              <Clock className="h-4 w-4 inline mr-1.5 text-primary-600 pb-0.5" />
               Preferred Time *
             </label>
             <select
@@ -189,7 +189,7 @@ const AppointmentForm = () => {
               value={formData.time}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-[15px] font-medium text-slate-900 outline-none"
             >
               <option value="">Select a time</option>
               {timeSlots.map((time) => (
@@ -199,13 +199,15 @@ const AppointmentForm = () => {
           </div>
         </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-        >
-          Book Appointment
-        </button>
+        <div className="pt-4">
+          <button
+            type="submit"
+            className="w-full bg-primary-900 text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-primary-700 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 text-base flex items-center justify-center group"
+          >
+            Confirm Appointment
+            <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
       </form>
     </div>
   );

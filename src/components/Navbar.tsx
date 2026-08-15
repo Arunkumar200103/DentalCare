@@ -1,163 +1,124 @@
-import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Brain } from "lucide-react";
-import { useAuth } from "../contexts/AuthContext";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, logout } = useAuth();
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "Our Doctor", href: "/doctor" },
-    { name: "Counselors", href: "/nurses" },
-    { name: "Patients Database", href: "/patients" },
-    { name: "Book Appointment", href: "/book-appointment" },
-    { name: "Contact", href: "/contact" },
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const closeMenu = () => setIsOpen(false);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Specialists', path: '/our-team' },
+    { name: 'Contact', path: '/contact' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-    setIsMenuOpen(false);
-  };
-
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(11,59,130,0.08)] border-b border-white/40 py-3'
+          : 'bg-white border-b border-slate-100 py-5'
+        }`}
+    >
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-indigo-600 animate-pulse" />
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 leading-none">DS Clinic</span>
-              <span className="text-[9px] text-gray-500 font-semibold tracking-wider uppercase">Neuropsychiatry & De-addiction</span>
-            </div>
+          <Link to="/" className="flex items-center group" onClick={closeMenu}>
+            <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
           </Link>
 
-          {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            {navigation.map((item) => (
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
               <Link
-                key={item.name}
-                to={item.href}
-                className={`px-2.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors ${
-                  isActive(item.href)
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                }`}
+                key={link.name}
+                to={link.path}
+                className={`relative px-1 py-1 text-[15px] font-medium transition-colors duration-300 group ${location.pathname === link.path
+                    ? 'text-[#0B3B82] font-semibold'
+                    : 'text-slate-600 hover:text-[#0B3B82]'
+                  }`}
               >
-                {item.name}
+                {link.name}
+                {/* Active Indicator & Hover Effect */}
+                <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-[3px] rounded-full bg-[#0F8B8D] transition-all duration-300 ${
+                  location.pathname === link.path ? 'w-1/2 opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-40'
+                }`}></span>
               </Link>
             ))}
 
-            {/* Dashboard / Auth */}
-            {user ? (
-              <>
-                <Link
-                  to="/dashboard"
-                  className={`px-2.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors ${
-                    isActive("/dashboard")
-                      ? "text-indigo-600 bg-indigo-50"
-                      : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                  }`}
-                >
-                  Dashboard
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="ml-2 px-2.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <Link
-                to="/login"
-                className={`px-2.5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors ${
-                  isActive("/login")
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                }`}
-              >
-                Login
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen((p) => !p)}
-              className="text-gray-700 hover:text-indigo-600 p-2"
+            <Link
+              to="/book-appointment"
+              className="ml-2 px-6 py-2.5 bg-gradient-to-r from-[#0B3B82] to-[#1565C0] text-white text-[15px] font-bold rounded-full hover:shadow-[0_8px_20px_rgba(11,59,130,0.25)] hover:-translate-y-0.5 transition-all duration-300 border border-transparent hover:border-blue-400/30"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              Book Appointment
+            </Link>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2.5 rounded-full transition-all duration-300 focus:outline-none ${
+                isOpen ? 'bg-primary-50 text-primary-900 rotate-90' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'
+              }`}
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile nav */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive(item.href)
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-
-            {user ? (
-              <>
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-b border-slate-200 overflow-hidden"
+          >
+            <div className="px-4 pt-2 pb-6 space-y-2">
+              {navLinks.map((link) => (
                 <Link
-                  to="/dashboard"
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive("/dashboard")
-                      ? "text-indigo-600 bg-indigo-50"
-                      : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                  }`}
+                  key={link.name}
+                  to={link.path}
+                  onClick={closeMenu}
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${location.pathname === link.path
+                      ? 'bg-primary-50 text-primary-900'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-primary-900'
+                    }`}
                 >
-                  Dashboard
+                  {link.name}
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
+              ))}
+              <div className="pt-4 px-4">
+                <Link
+                  to="/book-appointment"
+                  onClick={closeMenu}
+                  className="block w-full text-center px-[22px] py-[12px] bg-primary-900 text-white font-semibold rounded-xl hover:bg-primary-600 shadow-md transition-colors"
                 >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <Link
-                to="/login"
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive("/login")
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50"
-                }`}
-              >
-                Login
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
-    </nav>
+                  Book Appointment
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

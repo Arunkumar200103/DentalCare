@@ -1,74 +1,80 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-[#082554]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+          
           {/* Brand */}
-          <div className="col-span-1 lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <Brain className="h-8 w-8 text-indigo-500 animate-pulse" />
-              <span className="text-2xl font-bold tracking-tight">DS Clinic</span>
+          <div className="col-span-1 lg:col-span-2 lg:pr-12">
+            <Link to="/" className="flex items-center space-x-3 mb-8 group w-max">
+              <div className="relative flex items-center justify-center bg-white rounded-xl transition-colors duration-300 overflow-hidden">
+                <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-12 md:h-14 lg:h-16 w-auto object-contain" />
+              </div>
             </Link>
-            <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-              Providing exceptional, confidential neuropsychiatric, de-addiction, and psychosexual care in Avadi, Chennai. 
-              Our focus is to empower your mental wellbeing and overall health.
+            <p className="text-blue-100/80 mb-8 text-base leading-relaxed font-medium max-w-md">
+              Providing exceptional, confidential care in Neurology, Psychiatry, Diabetology, and General Medicine in Avadi, Chennai.
             </p>
-            <div className="flex items-center space-x-2 text-gray-300">
-              <Clock size={16} className="text-indigo-400" />
-              <span className="text-sm">Mon-Sat: 6:00 PM - 9:30 PM | Sun: Closed</span>
+            <div className="flex flex-col space-y-2">
+              <div className="text-sm font-bold text-white uppercase tracking-widest">Clinic Timings</div>
+              <div className="text-blue-100 font-medium bg-white/5 w-max px-4 py-2 rounded-xl border border-white/10 text-sm">
+                Mon-Sat: 6:00 PM - 9:30 PM <span className="mx-2 text-white/20">|</span> Sun: Closed
+              </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-indigo-400">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-indigo-400 transition-colors">Home</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-indigo-400 transition-colors">Services</Link></li>
-              <li><Link to="/doctor" className="text-gray-300 hover:text-indigo-400 transition-colors">Our Doctor</Link></li>
-              <li><Link to="/nurses" className="text-gray-300 hover:text-indigo-400 transition-colors">Counselors</Link></li>
-              <li><Link to="/book-appointment" className="text-gray-300 hover:text-indigo-400 transition-colors">Book Appointment</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-indigo-400 transition-colors">Contact</Link></li>
+            <h3 className="text-sm font-bold mb-6 text-white uppercase tracking-widest">Quick Links</h3>
+            <ul className="space-y-3">
+              <li><Link to="/" className="text-blue-100/80 hover:text-white transition-colors font-medium text-sm">Home</Link></li>
+              <li><Link to="/services" className="text-blue-100/80 hover:text-white transition-colors font-medium text-sm">Services</Link></li>
+              <li><Link to="/our-team" className="text-blue-100/80 hover:text-white transition-colors font-medium text-sm">Specialists</Link></li>
+              <li><Link to="/book-appointment" className="text-blue-100/80 hover:text-white transition-colors font-medium text-sm">Book Appointment</Link></li>
+              <li><Link to="/contact" className="text-blue-100/80 hover:text-white transition-colors font-medium text-sm">Contact</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-indigo-400">Contact Info</h3>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-2 text-gray-300">
-                <MapPin size={16} className="text-indigo-500 mt-1 flex-shrink-0" />
-                <span className="text-sm">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</span>
+            <h3 className="text-sm font-bold mb-6 text-white uppercase tracking-widest">Contact Info</h3>
+            <div className="space-y-5">
+              <div className="flex items-start space-x-3 text-blue-100/80">
+                <div className="p-2 bg-white/5 rounded-lg shrink-0">
+                  <MapPin size={16} className="text-blue-200" />
+                </div>
+                <span className="text-sm font-medium leading-relaxed">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Phone size={16} className="text-indigo-500" />
-                <span className="text-sm">+91 94441 62657</span>
+              <div className="flex items-center space-x-3 text-blue-100/80">
+                <div className="p-2 bg-white/5 rounded-lg shrink-0">
+                  <Phone size={16} className="text-blue-200" />
+                </div>
+                <span className="text-sm font-bold text-white">+91 94441 62657</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Mail size={16} className="text-indigo-500" />
-                <span className="text-sm">info@dsclinic.com</span>
+              <div className="flex items-center space-x-3 text-blue-100/80">
+                <div className="p-2 bg-white/5 rounded-lg shrink-0">
+                  <Mail size={16} className="text-blue-200" />
+                </div>
+                <span className="text-sm font-medium">info@dsclinic.com</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2026 DS Clinic. All rights reserved.
-            </p>
-            <div className="flex space-x-4 mt-4 sm:mt-0">
-              <Link to="#" className="text-gray-400 hover:text-indigo-400 text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="#" className="text-gray-400 hover:text-indigo-400 text-sm transition-colors">
-                Terms of Service
-              </Link>
-            </div>
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-blue-200/60 text-sm font-medium">
+            &copy; {new Date().getFullYear()} DS Clinic. All rights reserved.
+          </p>
+          <div className="flex space-x-6">
+            <Link to="#" className="text-blue-200/60 hover:text-white text-sm transition-colors font-medium">
+              Privacy Policy
+            </Link>
+            <Link to="#" className="text-blue-200/60 hover:text-white text-sm transition-colors font-medium">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>

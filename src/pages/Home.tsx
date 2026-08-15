@@ -1,349 +1,503 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { 
+import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
+import {
   ArrowRight, 
-  Shield, 
-  Award, 
+  Brain, 
   Heart, 
-  Star,
+  Activity,
   Calendar,
-  Brain,
-  Users,
-  Clock,
-  Activity
+  Shield,
+  ShieldCheck,
+  Stethoscope,
+  UserRound,
+  HeartHandshake,
+  ClipboardCheck,
+  Plus,
+  Minus,
+  Quote,
+  Star
 } from 'lucide-react';
+import AppointmentBanner from '../components/banners/AppointmentBanner';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+};
+
+const AnimatedCounter = ({ value, suffix = "", prefix = "" }: { value: number, suffix?: string, prefix?: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(0, value, {
+        duration: 2.5,
+        ease: "easeOut",
+        onUpdate: (val) => setDisplayValue(Math.floor(val))
+      });
+      return () => controls.stop();
+    }
+  }, [isInView, value]);
+
+  return <span ref={ref}>{prefix}{displayValue}{suffix}</span>;
+};
+
 
 const Home = () => {
-  const testimonials = [
+  const [openFaq, setOpenFaq] = useState<number | null>(1);
+
+  const faqs = [
     {
       id: 1,
-      name: "Ramesh Kumar",
-      text: "Exceptional psychiatric care. Dr. Nirmal's diagnosis helped me overcome chronic insomnia and anxiety. I can finally sleep peacefully.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      category: "General",
+      q: "How can I book an appointment?",
+      a: "You can book an appointment easily through our online booking system, by calling our emergency line at +91 94441 62657, or by visiting our clinic during operating hours."
     },
     {
       id: 2,
-      name: "Priya Sundar",
-      text: "The counseling and de-addiction program is outstanding. The staff is highly supportive, extremely compassionate, and strictly respects patient confidentiality.",
-      rating: 5,
-      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      category: "Psychiatry",
+      q: "Are consultations completely confidential?",
+      a: "Absolutely. We adhere to strict patient confidentiality protocols. Your medical records, consultation notes, and personal information are securely protected and never shared without explicit consent."
     },
     {
       id: 3,
-      name: "Anand Raj",
-      text: "Excellent therapy sessions for work stress and anxiety. The clinic environment is incredibly calm and professional. Highly recommended!",
-      rating: 5,
-      image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      category: "Psychiatry",
+      q: "How does a psychiatric consultation work?",
+      a: "Your first visit involves a comprehensive assessment where the specialist listens to your concerns, reviews your medical history, and collaboratively develops a tailored treatment plan."
+    },
+    {
+      id: 4,
+      category: "Diabetes",
+      q: "What should I bring for my diabetes consultation?",
+      a: "Please bring any recent blood test reports, your current medication list, past medical records, and your daily blood glucose monitoring log if you maintain one."
+    },
+    {
+      id: 5,
+      category: "Diabetes",
+      q: "How frequently should diabetes follow-ups happen?",
+      a: "Depending on your control levels, follow-ups are typically scheduled every 3 to 6 months. We will provide a customized monitoring schedule during your visit."
     }
   ];
 
-  const stats = [
-    { icon: Users, value: "10,000+", label: "Happy Patients" },
-    { icon: Award, value: "15+", label: "Years Experience" },
-    { icon: Brain, value: "10+", label: "Specialized Services" },
-    { icon: Clock, value: "Mon-Sat", label: "6:00 PM - 9:30 PM" }
-  ];
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center space-x-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-                <Brain className="h-4 w-4" />
-                <span>Neuropsychiatry, De-addiction & Sexual Health</span>
-              </div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Your Mental Health,{' '}
-                <span className="text-indigo-600">Our Committed Priority</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Experience compassionate, evidence-based psychiatric and counseling care. 
-                Led by Dr. Nirmal Kumar Seenan, we help you overcome anxiety, depression, addictions, 
-                and stress in a completely confidential environment.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/book-appointment"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  Book Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-                <Link
-                  to="/services"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-indigo-600 text-indigo-600 font-semibold rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200"
-                >
-                  Explore Services
-                </Link>
-              </div>
+    <div className="min-h-screen font-sans bg-background-main overflow-hidden pt-20">
+      
+      {/* 1. Enhanced Hero Section */}
+      <section className="relative w-full min-h-auto pt-8 sm:pt-12 pb-10 lg:min-h-[760px] lg:py-0 flex items-center overflow-hidden">
+        
+        {/* Desktop Background Layer */}
+        <div 
+          className="hidden lg:block absolute inset-0 z-0 bg-cover bg-center bg-no-repeat lg:bg-[center_right] opacity-100"
+          style={{ backgroundImage: "url('/images/hero/hero-background.png')" }}
+        ></div>
+
+        {/* Mobile Background Layer */}
+        <div 
+          className="block lg:hidden absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{ backgroundImage: "url('/images/hero/hero-background-mobile.png')" }}
+        ></div>
+        
+        {/* Desktop Gradient Overlay (Hidden on Mobile) */}
+        <div className="hidden lg:block absolute inset-0 z-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/80 to-transparent w-[70%]"></div>
+
+        {/* Mobile Gradient Overlay (Very soft, just to ensure contrast) */}
+        <div className="block lg:hidden absolute inset-0 z-0 bg-white/40"></div>
+
+        <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center lg:items-stretch h-full">
+          
+          {/* Text Content (LEFT on Desktop, TOP on Mobile) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="w-full lg:w-[55%] flex flex-col justify-center space-y-5 lg:space-y-8 pt-4 lg:pt-0"
+          >
+            <div className="inline-flex items-center text-[#0B3B82] lg:text-blue-300 font-bold tracking-[1.5px] uppercase text-[10px] sm:text-[11px]">
+              <span>SPECIALIZED CARE FOR MIND & BODY</span>
             </div>
-            <div className="relative">
-              <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmzcyyvzS59XXBXrTNTCRvn7ug8IOnXRQo88EG7dphUJBERxNSxGmiMqIA2G8LLeEIjcDrXJLVwmMEiKjIQXmLT1nqbSluKV4uSZaT6hdlYr0r7fpL3QRuYCzzbgUg3V9oklLxvgz_nkn0p=w1000"
-                alt="DS Clinic Avadi Entrance Board"
-                className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-emerald-100 rounded-full">
-                    <Heart className="h-6 w-6 text-emerald-600 animate-pulse" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-800">100%</div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Strict Confidentiality</div>
-                  </div>
+            
+            {/* Responsive Typography */}
+            <h1 className="text-[32px] sm:text-[36px] md:text-[44px] lg:text-[56px] xl:text-[64px] font-[800] text-[#0F172A] lg:text-white leading-[1.1] tracking-tight pr-4 sm:pr-0">
+              Better <span className="text-[#0B3B82] lg:text-blue-400">Mental Health.</span><br />
+              Better <span className="text-[#0F8B8D] lg:text-teal-400">Everyday Living.</span>
+            </h1>
+            
+            <p className="text-[15px] sm:text-[16px] lg:text-[17px] text-[#475569] lg:text-slate-300 leading-[1.6] lg:leading-[1.7] font-medium w-full max-w-[100%] lg:max-w-[480px]">
+              Personalized psychiatric and diabetology care tailored<br className="hidden lg:block" />
+              to your unique needs.<br className="hidden lg:block" />
+              Your well-being is our priority.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+              <Link to="/book-appointment" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 border border-transparent text-[14px] sm:text-[15px] font-bold rounded-[14px] text-white bg-[#0B3B82] hover:bg-[#092c63] shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 transition-all duration-300 group">
+                Book Appointment
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/services" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 border-2 border-[#0B3B82] lg:border-white/30 text-[14px] sm:text-[15px] font-bold rounded-[14px] text-[#0B3B82] lg:text-white hover:bg-[#0B3B82] hover:border-[#0B3B82] lg:hover:bg-white lg:hover:text-[#0B3B82] transition-colors duration-300">
+                Explore Services
+              </Link>
+            </div>
+
+            {/* Trust Indicators (2 Columns on Mobile, Row on Desktop) */}
+            <div className="pt-6 lg:pt-8 grid grid-cols-2 md:flex md:flex-row md:flex-wrap gap-y-3 gap-x-2 md:gap-4 lg:gap-8 w-full">
+              {[
+                { icon: ShieldCheck, text: "Confidential Care" },
+                { icon: UserRound, text: "Expert Consultation" },
+                { icon: HeartHandshake, text: "Personalized Care" },
+                { icon: ClipboardCheck, text: "Evidence-Based" }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-row items-center space-x-2 group">
+                  <item.icon className="w-4 h-4 lg:w-[18px] lg:h-[18px] text-[#0B3B82] shrink-0" strokeWidth={2} />
+                  <span className="text-[#475569] text-[12px] md:text-[13px] font-semibold leading-tight">{item.text}</span>
                 </div>
-              </div>
+              ))}
             </div>
+          </motion.div>
+          
+          {/* Visual Content (Mobile Image BELOW text, Desktop uses Background) */}
+          <div className="w-full lg:w-[45%] flex justify-center items-end mt-10 lg:mt-0 lg:hidden">
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              src="/images/hero/hero-background-mobile.png"
+              alt="Medical Care Visualization"
+              className="w-full max-w-[420px] object-contain mx-auto"
+            />
           </div>
+          
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-indigo-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="p-3 bg-indigo-800 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-indigo-700">
-                  <stat.icon className="h-8 w-8 text-indigo-300" />
+      {/* 3. Why Choose Us Section */}
+      <section className="py-24 bg-white border-y border-slate-100">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="text-primary-900 font-bold tracking-widest uppercase text-xs mb-3">
+              Why Choose Us
+            </motion.h2>
+            <motion.h3 variants={fadeInUp} className="text-3xl lg:text-[40px] font-bold text-slate-900 leading-[1.15]">
+              Excellence in healthcare delivery.
+            </motion.h3>
+          </motion.div>
+
+          {/* Mobile Swipe Hint */}
+          <div className="flex md:hidden items-center justify-end text-slate-400 text-xs font-semibold mb-3 pr-4">
+            <span className="animate-pulse flex items-center">Swipe <ArrowRight className="w-3 h-3 ml-1" /></span>
+          </div>
+
+          <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-8 lg:pb-0 px-4 sm:px-0 -mx-4 sm:mx-0 hide-scrollbar snap-x snap-mandatory">
+            {[
+              { icon: UserRound, title: "Personalized Care", desc: "Every patient receives a unique, thoroughly researched treatment plan tailored specifically to their medical history." },
+              { icon: Stethoscope, title: "Experienced Specialists", desc: "Consult directly with dual-specialty doctors holding over a decade of intensive clinical experience." },
+              { icon: Shield, title: "Confidential Consultation", desc: "We enforce rigorous privacy standards ensuring your mental and physical health records remain strictly confidential." },
+              { icon: Brain, title: "Evidence-Based Treatment", desc: "We utilize modern, clinically proven pharmacological and therapeutic interventions for superior outcomes." },
+              { icon: Activity, title: "Modern Healthcare", desc: "Access the latest diagnostic technologies and continuous metabolic monitoring for preventative care." },
+              { icon: HeartHandshake, title: "Long-Term Support", desc: "Health is a journey. We provide dedicated follow-up protocols to adapt your treatment as you heal." }
+            ].map((feature, i) => (
+              <motion.div 
+                variants={fadeInUp} 
+                key={i} 
+                className="bg-white hover:bg-gradient-to-br hover:from-white hover:to-primary-50 p-8 rounded-[28px] border border-slate-100 hover:border-primary-200 transition-all duration-500 group shadow-sm hover:shadow-[0_20px_40px_rgba(11,59,130,0.08)] hover:-translate-y-1 cursor-pointer w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center relative overflow-hidden"
+              >
+                {/* Decorative background glow on hover */}
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary-100 rounded-full blur-[50px] opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"></div>
+
+                <div className="w-16 h-16 bg-background-main rounded-[20px] shadow-sm flex items-center justify-center mb-6 border border-slate-100 group-hover:bg-[#0B3B82] group-hover:shadow-md transition-all duration-500 relative z-10 group-hover:scale-110">
+                  <feature.icon className="w-8 h-8 text-[#0B3B82] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-indigo-200 text-sm font-semibold">{stat.label}</div>
-              </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3 relative z-10 group-hover:text-[#0B3B82] transition-colors">{feature.title}</h4>
+                <p className="text-[15px] text-slate-600 font-medium leading-[1.6] relative z-10 group-hover:text-slate-700">
+                  {feature.desc}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm3xbXU_Wp9XvOjeNEb0kWOlOaA_yPp3k2Htux50zi5PTSigsT_gC7t1mUuubCI3NtuUtWLt8mfU8imPiBwN0SQ6ANGzHphQbYFDWiF2unYWbssjeMCZwOvmIALF7KccegSjuOBAYmREa4=w1000"
-                alt="Dr. Nirmal Kumar Seenan Clinic Board details"
-                className="rounded-2xl shadow-xl w-full object-cover border border-gray-100"
-              />
+      {/* 3. Patient Journey Timeline */}
+      <section className="py-24 bg-background-main relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-50/50 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="text-secondary-600 font-bold tracking-widest uppercase text-xs mb-3">
+              Our Approach
+            </motion.h2>
+            <motion.h3 variants={fadeInUp} className="text-3xl lg:text-[40px] font-bold text-slate-900 leading-[1.15]">
+              Your journey to better health.
+            </motion.h3>
+          </motion.div>
+
+          <div className="relative">
+            {/* Desktop Connecting Line */}
+            <div className="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] bg-slate-200 z-0"></div>
+            
+            {/* Mobile Swipe Hint */}
+            <div className="flex lg:hidden items-center justify-end text-slate-400 text-xs font-semibold mb-3 pr-4">
+              <span className="animate-pulse flex items-center">Swipe <ArrowRight className="w-3 h-3 ml-1" /></span>
             </div>
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-                Why Choose DS Clinic?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                With over 15 years of clinical expertise, DS Clinic is a trusted name in Avadi, Chennai, 
-                for comprehensive mental healthcare. We combine medical expertise with compassionate counseling 
-                to guide our patients towards holistic healing.
+            
+            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-6 lg:gap-8 relative z-10 snap-x snap-mandatory pb-8 lg:pb-0 px-4 sm:px-0 -mx-4 sm:mx-0 hide-scrollbar">
+              {[
+                { step: "01", title: "Consultation", desc: "Book an appointment and share your medical history.", icon: Calendar },
+                { step: "02", title: "Assessment", desc: "Comprehensive evaluation by our specialists.", icon: ClipboardCheck },
+                { step: "03", title: "Treatment", desc: "A personalized, evidence-based care plan is created.", icon: Heart },
+                { step: "04", title: "Support", desc: "Continuous monitoring and follow-up adjustments.", icon: HeartHandshake }
+              ].map((item, i) => (
+                <motion.div 
+                  variants={fadeInUp} 
+                  key={i} 
+                  className="relative flex flex-col items-center text-center group w-[85vw] sm:w-[320px] lg:w-auto shrink-0 snap-center"
+                >
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-background-main shadow-md mb-6 relative z-10 group-hover:border-primary-100 transition-colors duration-300">
+                    <item.icon className="w-8 h-8 text-primary-900" strokeWidth={1.5} />
+                  </div>
+                  <div className="text-primary-300 font-bold text-4xl opacity-50 mb-2">{item.step}</div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h4>
+                  <p className="text-[14px] text-slate-600 font-medium leading-[1.6] max-w-[200px]">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Medical Statistics (Counters) */}
+      <section className="py-20 lg:py-28 bg-[#0B1120] relative overflow-hidden">
+        {/* Modern Glowing Background Effects */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-[#0B3B82]/30 rounded-full blur-[100px] pointer-events-none z-0"></div>
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[250px] lg:w-[400px] h-[250px] lg:h-[400px] bg-[#0F8B8D]/20 rounded-full blur-[100px] pointer-events-none z-0"></div>
+        
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="w-full bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[32px] p-10 lg:p-16 shadow-2xl relative overflow-hidden"
+          >
+            {/* Subtle inner top glare */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
+            
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 lg:gap-x-12 text-center relative z-10">
+              {[
+                { value: 15, suffix: "+", label: "Years Experience", icon: Calendar },
+                { value: 10, suffix: "k+", label: "Patients Supported", icon: UserRound },
+                { value: 8, suffix: "+", label: "Specialized Services", icon: Stethoscope },
+                { value: 100, suffix: "%", label: "Confidentiality", icon: ShieldCheck }
+              ].map((stat, i) => (
+                <motion.div variants={fadeInUp} key={i} className="flex flex-col items-center justify-center relative group">
+                  {/* Decorative divider for desktop */}
+                  {i !== 3 && <div className="hidden lg:block absolute -right-6 top-1/4 bottom-1/4 w-[1px] bg-white/10"></div>}
+                  
+                  {/* Decorative divider for mobile grid (between rows) */}
+                  {(i === 0 || i === 1) && <div className="block lg:hidden absolute -bottom-6 left-1/4 right-1/4 h-[1px] bg-white/10"></div>}
+                  
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-[18px] bg-white/5 flex items-center justify-center mb-6 lg:mb-8 group-hover:bg-white/10 transition-colors duration-300 border border-white/5 shadow-inner">
+                    <stat.icon className="w-6 h-6 lg:w-8 lg:h-8 text-[#0F8B8D]" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-[40px] sm:text-[48px] lg:text-[56px] font-black text-white mb-2 lg:mb-3 tracking-tight leading-none flex items-center justify-center">
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  </span>
+                  <span className="text-[11px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-300 uppercase tracking-widest max-w-[120px] sm:max-w-none mx-auto leading-tight sm:leading-normal">{stat.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 4.5 Meet the Expert */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#0B3B82] rounded-[40px] overflow-hidden flex flex-col lg:flex-row relative shadow-[0_20px_60px_rgba(11,59,130,0.15)]">
+            {/* Image Side */}
+            <div className="w-full lg:w-[45%] h-[350px] lg:h-auto relative bg-[#0F8B8D]">
+              <img 
+                src="/images/doctor2.png" 
+                alt="Dr. Nirmal Kumar Seenan" 
+                className="absolute inset-0 w-full h-full object-cover object-top opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B3B82] to-transparent opacity-60 lg:opacity-30"></div>
+            </div>
+            
+            {/* Content Side */}
+            <div className="w-full lg:w-[55%] p-10 lg:p-20 relative z-10 flex flex-col justify-center">
+              <div className="self-start mb-6">
+                <span className="inline-block text-[#0F8B8D] font-bold text-[12px] tracking-widest uppercase bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-sm">
+                  Lead Consultant
+                </span>
+              </div>
+              <h3 className="text-3xl md:text-[40px] font-bold text-white mb-4 leading-tight">
+                Dr. Nirmal Kumar Seenan
+              </h3>
+              <p className="text-blue-200 font-semibold text-lg mb-6">M.D. Psychiatry, Fellowship in Diabetology</p>
+              
+              <p className="text-white/80 text-[15px] lg:text-[16px] leading-[1.8] mb-10 max-w-[500px]">
+                With over a decade of dual-specialty experience, Dr. Nirmal combines advanced psychiatric care with metabolic health management. His holistic approach ensures that both your mind and body receive the expert, compassionate care they deserve.
               </p>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-emerald-100 rounded-full flex-shrink-0">
-                    <Shield className="h-6 w-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">100% Confidentiality & Safety</h3>
-                    <p className="text-gray-600">We prioritize patient privacy above all. Every therapy session and medical file is strictly confidential.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-indigo-100 rounded-full flex-shrink-0">
-                    <Award className="h-6 w-6 text-indigo-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">Expert Psychiatric Care</h3>
-                    <p className="text-gray-600">Led by Dr. Nirmal Kumar Seenan, MD in Psychiatry, specializing in neuropsychiatry and de-addiction.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-purple-100 rounded-full flex-shrink-0">
-                    <Heart className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">Holistic & Patient-Centered</h3>
-                    <p className="text-gray-600">Personalized mental health treatment plans incorporating medical therapy, CBT counseling, and lifestyle support.</p>
-                  </div>
-                </div>
+              <div className="self-start">
+                <Link
+                  to="/our-team"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0B3B82] font-bold rounded-[14px] hover:bg-slate-50 hover:-translate-y-1 transition-all duration-300 shadow-xl text-[15px]"
+                >
+                  Read Full Profile <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              Our Key Specializations
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional, highly confidential psychiatric and psychological counseling support
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="p-3 bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                <Brain className="h-8 w-8 text-indigo-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">De-addiction Care</h3>
-              <p className="text-gray-600 mb-4">Evidence-based programs helping patients reclaim control over alcohol, chemical, and digital dependencies.</p>
-              <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="p-3 bg-emerald-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                <Activity className="h-8 w-8 text-emerald-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Anxiety & Depression</h3>
-              <p className="text-gray-600 mb-4">Compassionate cognitive therapies and medical stabilization plans for mood disorders.</p>
-              <div className="text-2xl font-bold text-indigo-600">₹300 / session</div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-              <div className="p-3 bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                <Heart className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Sexual Health Concerns</h3>
-              <p className="text-gray-600 mb-4">Confidential consulting and therapeutic assistance for erectile difficulties, loss of libido, and psychosexual anxiety.</p>
-              <div className="text-2xl font-bold text-indigo-600">₹500 / session</div>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <Link
-              to="/services"
-              className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              View All Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* 4.6 Patient Testimonials */}
+      <section className="py-24 bg-background-main relative overflow-hidden">
+        {/* Subtle background blob */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#0F8B8D]/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+        
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="text-[#0F8B8D] font-bold tracking-widest uppercase text-xs mb-3">
+              Patient Stories
+            </motion.h2>
+            <motion.h3 variants={fadeInUp} className="text-3xl lg:text-[40px] font-bold text-slate-900 leading-[1.15]">
+              Real care, real results.
+            </motion.h3>
+          </motion.div>
 
-      {/* Clinic Gallery Section */}
-      <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              Our Clinic Facility
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Take a look inside DS Clinic in Avadi, Chennai—providing a clean, quiet, and supportive environment for your wellness journey.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
-              <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmzcyyvzS59XXBXrTNTCRvn7ug8IOnXRQo88EG7dphUJBERxNSxGmiMqIA2G8LLeEIjcDrXJLVwmMEiKjIQXmLT1nqbSluKV4uSZaT6hdlYr0r7fpL3QRuYCzzbgUg3V9oklLxvgz_nkn0p=w800"
-                alt="DS Clinic Main Board Entrance"
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-4 bg-gray-50 border-t border-gray-100">
-                <p className="font-bold text-gray-700 text-center">Clinic Entrance & Main Board</p>
-              </div>
-            </div>
+          <div className="flex overflow-hidden relative w-full group py-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+            {/* Left and Right fade gradients for smooth entering/exiting */}
+            <div className="absolute top-0 bottom-0 left-0 w-16 lg:w-32 bg-gradient-to-r from-background-main to-transparent z-20 pointer-events-none"></div>
+            <div className="absolute top-0 bottom-0 right-0 w-16 lg:w-32 bg-gradient-to-l from-background-main to-transparent z-20 pointer-events-none"></div>
 
-            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
-              <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm3xbXU_Wp9XvOjeNEb0kWOlOaA_yPp3k2Htux50zi5PTSigsT_gC7t1mUuubCI3NtuUtWLt8mfU8imPiBwN0SQ6ANGzHphQbYFDWiF2unYWbssjeMCZwOvmIALF7KccegSjuOBAYmREa4=w800"
-                alt="Dr. Nirmal Kumar Seenan Qualification nameboard"
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-4 bg-gray-50 border-t border-gray-100">
-                <p className="font-bold text-gray-700 text-center">Consulting Qualifications & Timings</p>
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
-              <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmbWbqDGZ3HTLedEHhrg3Nf-vlNyJxkdg9llL0JbnsmR5PcFuf_SIKufaSCjkk6lfllEcSyLmXcUjx4w2gDFqy-CwkNQA0St4Tg8zmJSGFdLtPGRjxsLljdksMOl7nyi_cinNcidXVIJjiE=w800"
-                alt="DS Clinic Consulting Room"
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="p-4 bg-gray-50 border-t border-gray-100">
-                <p className="font-bold text-gray-700 text-center">Diagnostics & Consulting Room</p>
-              </div>
+            <div className="flex gap-8 animate-scroll hover:[animation-play-state:paused] w-max">
+              {[
+                { text: "Dr. Nirmal is incredibly patient and understanding. His dual expertise helped me manage both my anxiety and my metabolic issues seamlessly.", name: "S. Rao", role: "Patient" },
+                { text: "The clinic environment is so calm and professional. I felt completely safe discussing my mental health, and the treatment plan has changed my life.", name: "M. Kumar", role: "Patient" },
+                { text: "I highly recommend DS Clinic. The comprehensive approach to my diabetes management, including lifestyle counseling, has been exceptional.", name: "A. Patel", role: "Patient" },
+                // Duplicate for infinite scroll loop
+                { text: "Dr. Nirmal is incredibly patient and understanding. His dual expertise helped me manage both my anxiety and my metabolic issues seamlessly.", name: "S. Rao", role: "Patient" },
+                { text: "The clinic environment is so calm and professional. I felt completely safe discussing my mental health, and the treatment plan has changed my life.", name: "M. Kumar", role: "Patient" },
+                { text: "I highly recommend DS Clinic. The comprehensive approach to my diabetes management, including lifestyle counseling, has been exceptional.", name: "A. Patel", role: "Patient" }
+              ].map((review, i) => (
+                <div 
+                  key={i}
+                  className="bg-white p-8 lg:p-10 rounded-[32px] border border-[#EAF4FF] shadow-[0_12px_40px_rgba(11,59,130,0.04)] hover:-translate-y-2 transition-transform duration-500 relative flex flex-col w-[320px] md:w-[380px] lg:w-[400px] shrink-0"
+                >
+                  <Quote className="w-10 h-10 text-[#0F8B8D]/10 absolute top-8 right-8" fill="currentColor" />
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} className="w-4 h-4 text-[#F59E0B]" fill="currentColor" />
+                    ))}
+                  </div>
+                  <p className="text-slate-700 text-[15px] lg:text-[16px] leading-[1.7] font-medium mb-8 relative z-10 flex-grow whitespace-normal">
+                    "{review.text}"
+                  </p>
+                  <div className="flex items-center gap-4 mt-auto">
+                    <div className="w-12 h-12 bg-[#EAF4FF] rounded-full flex items-center justify-center text-[#0B3B82] font-bold text-lg shrink-0">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-slate-900 text-[14px]">{review.name}</h5>
+                      <span className="text-slate-500 text-[13px] font-medium">{review.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-indigo-700 to-indigo-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              Take the First Step Towards Mental Wellbeing
-            </h2>
-            <p className="text-xl text-indigo-100 mb-8">
-              Book a confidential consultation today and explore specialized psychological therapies and care plans
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/book-appointment"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-900 font-bold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+      {/* 5. FAQ Section */}
+      <section className="py-24 bg-background-soft">
+        <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="text-primary-900 font-bold tracking-widest uppercase text-xs mb-3">
+              FAQ
+            </motion.h2>
+            <motion.h3 variants={fadeInUp} className="text-3xl lg:text-[40px] font-bold text-slate-900 leading-[1.15]">
+              Frequently asked questions.
+            </motion.h3>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="space-y-4"
+          >
+            {faqs.map((faq) => (
+              <motion.div 
+                variants={fadeInUp} 
+                key={faq.id} 
+                className={`bg-white rounded-[16px] border transition-all duration-300 overflow-hidden ${openFaq === faq.id ? 'border-primary-200 shadow-sm' : 'border-slate-200'}`}
               >
-                <Calendar className="mr-2 h-5 w-5 text-indigo-600" />
-                Book Consultation
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-indigo-900 transition-all duration-200"
-              >
-                Contact Clinic
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              What Our Patients Say
-            </h2>
-            <p className="text-xl text-gray-600">
-              Hear about their recovery and healing journeys
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 italic text-sm leading-relaxed">"{testimonial.text}"</p>
-                <div className="flex items-center">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover border-2 border-indigo-100"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-800 text-sm">{testimonial.name}</div>
-                  </div>
-                </div>
-              </div>
+                <button 
+                  onClick={() => setOpenFaq(openFaq === faq.id ? null : faq.id)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                >
+                  <span className="text-[16px] font-bold text-slate-900 pr-8">{faq.q}</span>
+                  <span className="text-primary-600 shrink-0 bg-primary-50 p-1.5 rounded-lg">
+                    {openFaq === faq.id ? <Minus size={18} /> : <Plus size={18} />}
+                  </span>
+                </button>
+                <AnimatePresence>
+                  {openFaq === faq.id && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-6 pb-6 text-[15px] text-slate-600 font-medium leading-[1.6]">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
+
+      <AppointmentBanner />
+
     </div>
   );
 };
