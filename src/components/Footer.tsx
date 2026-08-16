@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -64,10 +64,26 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-blue-200/60 text-sm font-medium">
             &copy; {new Date().getFullYear()} DS Clinic. All rights reserved.
           </p>
+
+          <div className="flex space-x-4">
+            <a href="https://wa.me/919444162657" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
+              <MessageCircle size={16} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-blue-600 hover:text-white transition-all duration-300" title="Facebook">
+              <Facebook size={16} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-pink-600 hover:text-white transition-all duration-300" title="Instagram">
+              <Instagram size={16} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-blue-400 hover:text-white transition-all duration-300" title="Twitter">
+              <Twitter size={16} />
+            </a>
+          </div>
+
           <div className="flex space-x-6">
             <Link to="#" className="text-blue-200/60 hover:text-white text-sm transition-colors font-medium">
               Privacy Policy

@@ -15,6 +15,21 @@ const AppointmentForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const message = `*New Appointment Request*
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Service:* ${formData.service}
+*Doctor:* ${formData.doctor || 'No preference'}
+*Date:* ${formData.date}
+*Time:* ${formData.time}`;
+
+    const whatsappNumber = '919444162657'; // Clinic phone number
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+
     console.log('Appointment booked:', formData);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);

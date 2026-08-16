@@ -17,6 +17,17 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const message = `*New Contact Form Message*
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Message:* ${formData.message}`;
+
+    const whatsappNumber = '919444162657'; // Clinic phone number
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+
     console.log('Contact form submitted:', formData);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
