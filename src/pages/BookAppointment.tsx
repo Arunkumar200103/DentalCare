@@ -127,7 +127,7 @@ const BookAppointment = () => {
                 <h4 className="font-bold text-red-900 mb-1">Clinical Crisis Helpline</h4>
                 <p className="text-[13px] text-red-700 leading-relaxed font-medium">
                   For psychiatric emergencies, acute distress, or immediate de-addiction assistance: 
-                  <span className="font-bold block mt-1 text-[15px]">+91 94441 62657</span>
+                  <span className="font-bold block mt-1 text-[15px]">+91 98846 56834</span>
                 </p>
               </div>
             </div>

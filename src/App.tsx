@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -32,6 +33,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <WhatsAppWidget />
         <Footer />
       </div>
     </Router>

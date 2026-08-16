@@ -23,7 +23,7 @@ const Contact = () => {
 *Email:* ${formData.email}
 *Message:* ${formData.message}`;
 
-    const whatsappNumber = '919444162657'; // Clinic phone number
+    const whatsappNumber = '919884656834'; // Clinic phone number
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
@@ -118,8 +118,8 @@ const Contact = () => {
                   <div>
                     <h3 className="text-[16px] font-bold text-[#0F172A] mb-1.5">Call Us</h3>
                     <p className="text-[#475569] text-[15px] leading-[1.6] font-medium">
-                      Appointments: <span className="font-bold text-[#0F172A]">+91 94441 62657</span><br />
-                      Helpline: <span className="font-bold text-[#0F172A]">+91 94441 62657</span>
+                      Appointments: <span className="font-bold text-[#0F172A]">+91 98846 56834</span><br />
+                      Helpline: <span className="font-bold text-[#0F172A]">+91 98846 56834</span>
                     </p>
                   </div>
                 </div>
@@ -167,9 +167,9 @@ const Contact = () => {
               <p className="text-[#991B1B] text-[15px] leading-[1.6] font-medium mb-5">
                 For severe psychiatric distress, panic concerns, or acute substance withdrawal symptoms outside clinical hours, please call our support coordination line or visit the nearest hospital emergency room.
               </p>
-              <a href="tel:+919444162657" className="inline-flex items-center space-x-2 text-[#991B1B] font-bold bg-white/60 px-4 py-2 rounded-[10px] hover:bg-white transition-colors border border-[#FECACA]">
+              <a href="tel:+919884656834" className="inline-flex items-center space-x-2 text-[#991B1B] font-bold bg-white/60 px-4 py-2 rounded-[10px] hover:bg-white transition-colors border border-[#FECACA]">
                 <Phone className="h-4 w-4" />
-                <span>Urgent Support: +91 94441 62657</span>
+                <span>Urgent Support: +91 98846 56834</span>
               </a>
             </div>
           </motion.div>

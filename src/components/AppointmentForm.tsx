@@ -25,7 +25,7 @@ const AppointmentForm = () => {
 *Date:* ${formData.date}
 *Time:* ${formData.time}`;
 
-    const whatsappNumber = '919444162657'; // Clinic phone number
+    const whatsappNumber = '919884656834'; // Clinic phone number
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');

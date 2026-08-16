@@ -131,9 +131,9 @@ const OurTeam = () => {
 
               {/* Professional Description */}
               <p className="text-[16px] text-slate-600 leading-[1.7] mb-8 font-medium">
-                Assistant Professor at Sri Muthukumaran Medical College Hospital & Research Institute, Chennai. Honorary visiting consultant at Be Well Hospitals (Ambattur) and Sir Ivan Stedeford Hospital (Avadi).
+                Dr. Nirmal Kumar Seenan has clinical experience of more than 12 years in the field of Mind and Medicine. He is an Assistant Professor at Sri Muthukumaran Medical College Hospital & Research Institute, Chennai, and an honorary visiting consultant at Be Well Hospitals (Ambattur) and Sir Ivan Stedeford Hospital (Avadi).
                 <br className="mb-3" />
-                Over a decade of specialized experience in treating cognitive disorders, severe anxiety, depression, and running comprehensive de-addiction programs.
+                He specializes in treating cognitive disorders, severe anxiety, depression, and running comprehensive de-addiction programs.
               </p>
 
               {/* Trust Indicators */}

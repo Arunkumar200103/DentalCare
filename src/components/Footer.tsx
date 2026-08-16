@@ -52,7 +52,7 @@ const Footer = () => {
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
                   <Phone size={16} className="text-blue-200" />
                 </div>
-                <span className="text-sm font-bold text-white">+91 94441 62657</span>
+                <span className="text-sm font-bold text-white">+91 98846 56834</span>
               </div>
               <div className="flex items-center space-x-3 text-blue-100/80">
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
@@ -70,7 +70,7 @@ const Footer = () => {
           </p>
 
           <div className="flex space-x-4">
-            <a href="https://wa.me/919444162657" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
+            <a href="https://wa.me/919884656834" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
               <MessageCircle size={16} />
             </a>
             <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-blue-200 hover:bg-blue-600 hover:text-white transition-all duration-300" title="Facebook">

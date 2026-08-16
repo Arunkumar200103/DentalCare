@@ -58,7 +58,7 @@ const Home = () => {
       id: 1,
       category: "General",
       q: "How can I book an appointment?",
-      a: "You can book an appointment easily through our online booking system, by calling our emergency line at +91 94441 62657, or by visiting our clinic during operating hours."
+      a: "You can book an appointment easily through our online booking system, by calling our emergency line at +91 98846 56834, or by visiting our clinic during operating hours."
     },
     {
       id: 2,
@@ -355,7 +355,7 @@ const Home = () => {
               <p className="text-blue-200 font-semibold text-lg mb-6">M.D. Psychiatry, Fellowship in Diabetology</p>
               
               <p className="text-white/80 text-[15px] lg:text-[16px] leading-[1.8] mb-10 max-w-[500px]">
-                With over a decade of dual-specialty experience, Dr. Nirmal combines advanced psychiatric care with metabolic health management. His holistic approach ensures that both your mind and body receive the expert, compassionate care they deserve.
+                With more than 12 years of clinical experience in Mind and Medicine, Dr. Nirmal combines advanced psychiatric care with metabolic health management. His holistic approach ensures that both your mind and body receive the expert, compassionate care they deserve.
               </p>
               
               <div className="self-start">
