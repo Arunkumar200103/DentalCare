@@ -11,6 +11,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import SpecialistBanner from '../components/banners/SpecialistBanner';
+import CertificatesSection from '../components/CertificatesSection';
 import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
@@ -41,7 +42,7 @@ const infoAnimation = {
 const OurTeam = () => {
   useSEO({
     title: 'Our Specialists | Dr. Nirmal Kumar Seenan & Dr. Shylaja | DS Clinic',
-    description: 'Meet our experienced specialists. Dr. Nirmal Kumar Seenan (Mind and Medicine) and Dr. Shylaja Nirmal (Diabetology & Family Medicine).'
+    description: 'Meet our experienced specialists. Dr. Nirmal Kumar Seenan (Mind and Medicine) and Dr. Shylaja Nirmal (Occupational & Family Health, Diabetology).'
   });
 
   return (
@@ -215,7 +216,7 @@ const OurTeam = () => {
               <div className="relative z-10 rounded-[28px] lg:rounded-[32px] overflow-hidden border-[4px] border-white shadow-[0_20px_40px_-15px_rgba(15,139,141,0.15)] h-[420px] lg:h-[550px] w-full">
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/10 to-transparent z-10 pointer-events-none"></div>
                 <img 
-                  src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" 
+                  src="/images/team/shylaja.jpeg" 
                   alt="Dr. Shylaja Nirmal" 
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   onError={(e) => {
@@ -236,8 +237,12 @@ const OurTeam = () => {
                 Dr. Shylaja Nirmal
               </h3>
               
+              <p className="text-[15px] font-semibold text-slate-500 mb-2">
+                MBBS, AFIH, F.Diab, CCEBDM
+              </p>
+              
               <h4 className="text-[18px] lg:text-[20px] font-semibold text-secondary-600 mb-6">
-                Consultant Family Physician & Diabetologist
+                Occupational Health Physician, Family Health Physician & Diabetologist
               </h4>
 
               {/* Tags */}
@@ -246,10 +251,10 @@ const OurTeam = () => {
                   <Activity className="w-3.5 h-3.5 mr-1.5" /> Diabetology
                 </span>
                 <span className="inline-flex items-center bg-[#E8F8F7] text-[#0F8B8D] px-3.5 py-1.5 rounded-[10px] text-[13px] font-semibold">
-                  <Stethoscope className="w-3.5 h-3.5 mr-1.5" /> General Medicine
+                  <Stethoscope className="w-3.5 h-3.5 mr-1.5" /> Family Health
                 </span>
                 <span className="inline-flex items-center bg-[#E8F8F7] text-[#0F8B8D] px-3.5 py-1.5 rounded-[10px] text-[13px] font-semibold">
-                  <HeartHandshake className="w-3.5 h-3.5 mr-1.5" /> Metabolic Health
+                  <ShieldCheck className="w-3.5 h-3.5 mr-1.5" /> Occupational Health
                 </span>
               </div>
 
@@ -303,6 +308,8 @@ const OurTeam = () => {
           </motion.div>
         </div>
       </section>
+
+      <CertificatesSection />
 
       <SpecialistBanner />
 

@@ -51,7 +51,14 @@ const AppointmentForm = () => {
     "Neuropsychiatry Consultation",
     "De-addiction Therapy",
     "Anxiety & Depression Management",
+    "Schizophrenia & Bipolar Disorder",
+    "Counselling & Psychotherapy",
+    "Insomnia & Sleep Disorders",
+    "Headache & Migraine",
+    "Sexual Health Concerns",
+    "Other Psychiatry Consultation",
     "Diabetology & Endocrinology",
+    "Metabolic & Thyroid Care",
     "General Medicine Check-up",
     "Lifestyle & Nutritional Counseling"
   ];

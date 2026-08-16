@@ -59,33 +59,61 @@ const Services = () => {
       description: "Specialized, compassionate care for severe mood and psychotic disorders. We focus on long-term stability, medication management, and family support to help patients regain a functional, fulfilling life.",
       icon: Brain,
       image: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "06",
+      title: "Counselling & Psychotherapy",
+      description: "Professional therapeutic interventions providing a safe space to explore emotional challenges, build resilience, and develop effective coping strategies.",
+      icon: Heart,
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "07",
+      title: "Insomnia & Sleep Disorders",
+      description: "Comprehensive evaluation and treatment for sleep-related issues, helping you achieve restorative sleep through behavioral therapies and medical management.",
+      icon: Activity,
+      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "08",
+      title: "Headache & Migraine",
+      description: "Targeted diagnosis and multifaceted treatment approaches to manage chronic headaches and migraines, improving your daily quality of life.",
+      icon: Brain,
+      image: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "09",
+      title: "Other Psychiatry Consultation",
+      description: "Expert evaluation and holistic care plans for various other psychiatric and psychological conditions not covered under specific programs.",
+      icon: Shield,
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80"
     }
   ];
 
   const diabetologyServices = [
     {
-      id: "06",
+      id: "10",
       title: "Type 1 & 2 Diabetes",
       description: "Personalized care plans including insulin regulation, continuous glucose monitoring, and tailored diet charts. Effective management strategies to prevent long-term complications.",
       icon: Activity,
       image: "/images/diabetes-care-service.png"
     },
     {
-      id: "07",
+      id: "11",
       title: "Metabolic & Thyroid Care",
       description: "Comprehensive testing and management of hypothyroidism, hyperthyroidism, PCOS, and other endocrine disorders. Advanced medical support for your metabolic system.",
       icon: Stethoscope,
       image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: "08",
+      id: "12",
       title: "General Consultations",
       description: "Routine check-ups, treatment of infectious diseases, blood pressure management, and comprehensive family health planning. Your primary destination for complete healthcare.",
       icon: Heart,
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: "09",
+      id: "13",
       title: "Lifestyle Counseling",
       description: "Expert guidance on weight management, heart-healthy diets, and preventative strategies to mitigate health risks before they develop. Build a sustainable foundation for wellness.",
       icon: Salad,
