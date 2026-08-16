@@ -36,8 +36,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center group" onClick={closeMenu}>
-            <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-[64px] md:h-[72px] lg:h-[80px] w-auto object-contain" />
+          <Link to="/" className="flex items-center group relative h-[48px] md:h-[56px] lg:h-[64px] w-[160px] md:w-[200px] lg:w-[240px]" onClick={closeMenu}>
+            <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="absolute -left-2 md:left-2 lg:left-4 top-1/2 -translate-y-1/2 h-[90px] sm:h-[110px] md:h-[140px] lg:h-[160px] w-auto max-w-none object-contain drop-shadow-sm" />
           </Link>
 
           {/* Desktop Navigation */}

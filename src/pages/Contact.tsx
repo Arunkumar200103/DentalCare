@@ -110,9 +110,11 @@ const Contact = () => {
                   <div>
                     <h3 className="text-[16px] font-bold text-[#0F172A] mb-1.5">Visit Our Clinic</h3>
                     <p className="text-[#475569] text-[15px] leading-[1.6] font-medium">
-                      No. 27, Moses Street,<br />
-                      West Gandhi Nagar, Avadi,<br />
-                      Chennai, Tamil Nadu - 600054
+                      <a href="https://maps.app.goo.gl/JLi7RVXLWbM8CZwTA" target="_blank" rel="noreferrer" className="hover:text-[#0B3B82] hover:underline transition-colors block">
+                        No. 27, Moses Street,<br />
+                        West Gandhi Nagar, Avadi,<br />
+                        Chennai, Tamil Nadu - 600054
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -256,14 +258,19 @@ const Contact = () => {
         >
           <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-6">
             <div>
-              <h2 className="text-[24px] lg:text-[28px] font-bold text-[#0F172A] mb-2 tracking-tight">Find Our Clinic in Avadi</h2>
+              <h2 className="text-[24px] lg:text-[28px] font-bold text-[#0F172A] mb-2 tracking-tight">
+                <a href="https://maps.app.goo.gl/JLi7RVXLWbM8CZwTA" target="_blank" rel="noreferrer" className="hover:text-[#0B3B82] hover:underline transition-colors inline-flex items-center">
+                  Find Our Clinic in Avadi
+                  <MapPin className="ml-2 w-5 h-5 text-[#0F8B8D]" />
+                </a>
+              </h2>
               <p className="text-[#475569] font-medium">Easily accessible by public transit with ample parking.</p>
             </div>
           </div>
           
           <div className="aspect-w-16 aspect-h-9 md:aspect-h-6 lg:aspect-h-5 rounded-[16px] overflow-hidden border border-[#E2E8F0] shadow-sm">
             <iframe
-              src="https://maps.google.com/maps?q=DS%20Clinic,%20Moses%20Street,%20Avadi,%20Chennai&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=DS+CLINIC,+27,+Moses+St,+West+Gandhi+Nagar,+Avadi,+Chennai,+Tamil+Nadu+600054&t=&z=17&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '400px' }}

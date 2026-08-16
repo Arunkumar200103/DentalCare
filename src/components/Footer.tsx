@@ -46,7 +46,7 @@ const Footer = () => {
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
                   <MapPin size={16} className="text-blue-200" />
                 </div>
-                <a href="https://maps.app.goo.gl/24B8wDfiKuNJE8248?g_st=aw" target="_blank" rel="noreferrer" className="text-sm font-medium leading-relaxed hover:text-white hover:underline transition-colors block">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</a>
+                <a href="https://maps.app.goo.gl/JLi7RVXLWbM8CZwTA" target="_blank" rel="noreferrer" className="text-sm font-medium leading-relaxed hover:text-white hover:underline transition-colors block">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</a>
               </div>
               <div className="flex items-center space-x-3 text-blue-100/80">
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
