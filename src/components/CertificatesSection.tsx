@@ -5,51 +5,63 @@ import { X, ZoomIn, Award } from 'lucide-react';
 const certificates = [
   {
     id: 1,
-    title: 'Best Post Graduate Award',
-    image: '/images/certificates/postgraduate.jpeg',
-    doctor: 'Academic Excellence'
-  },
-  {
-    id: 2,
-    title: 'Course in Psychiatry Research',
-    image: '/images/certificates/psychiatry.jpeg',
-    doctor: 'Specialized Certification'
-  },
-  {
-    id: 3,
-    title: 'Workshop in rTMS',
-    image: '/images/certificates/Workshop.jpeg',
-    doctor: 'Clinical Workshop'
-  },
-  {
-    id: 4,
-    title: 'Diabetes Course Certificate',
-    image: '/images/certificates/Diabetes.jpeg',
-    doctor: 'Specialized Certification'
-  },
-  {
-    id: 5,
     title: 'First Prize in Oral Paper Presentation',
     image: '/images/certificates/conference1.jpeg',
     doctor: 'International Conference Award'
   },
   {
-    id: 6,
+    id: 2,
     title: 'First Prize in Oral Paper Presentation',
     image: '/images/certificates/conference2.jpeg',
     doctor: 'International Conference Award'
   },
   {
-    id: 7,
-    title: 'Certificate of Excellence',
+    id: 3,
+    title: 'Certificate of Tamilnadu clinical establishment',
+    image: '/images/certificates/awards.jpeg',
+    doctor: 'Clinical Establishment'
+  },
+  {
+    id: 4,
+    title: 'Certificate of F.Diab (UK)',
     image: '/images/certificates/certificate.jpeg',
-    doctor: 'Awards & Recognition'
+    doctor: 'Specialized Certification'
+  },
+  {
+    id: 5,
+    title: 'Certificate of diabetes - Dr Shylaja',
+    image: '/images/certificates/Certificate_of_diabetes_Dr_Shylaja.jpeg',
+    doctor: 'Specialized Certification'
+  },
+  {
+    id: 6,
+    title: 'Masterclass in Diabetes - Dr Shylaja',
+    image: '/images/certificates/Masterclass_in_Diabetes_Dr_Shylaja.jpeg',
+    doctor: 'Specialized Certification'
+  },
+  {
+    id: 7,
+    title: 'Best Post Graduate Award',
+    image: '/images/certificates/postgraduate.jpeg',
+    doctor: 'Academic Excellence'
   },
   {
     id: 8,
-    title: 'Certificate of Achievement',
-    image: '/images/certificates/awards.jpeg',
-    doctor: 'Awards & Recognition'
+    title: 'Course in Psychiatry Research',
+    image: '/images/certificates/psychiatry.jpeg',
+    doctor: 'Dr. Nirmal Kumar Seenan'
+  },
+  {
+    id: 9,
+    title: 'Workshop in rTMS',
+    image: '/images/certificates/Workshop.jpeg',
+    doctor: 'Dr. Nirmal Kumar Seenan'
+  },
+  {
+    id: 10,
+    title: 'Diabetes Course Certificate',
+    image: '/images/certificates/Diabetes.jpeg',
+    doctor: 'Dr. Nirmal Kumar Seenan'
   }
 ];
 

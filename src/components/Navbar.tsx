@@ -37,7 +37,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/" className="flex items-center group" onClick={closeMenu}>
-            <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
+            <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-[64px] md:h-[72px] lg:h-[80px] w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation */}

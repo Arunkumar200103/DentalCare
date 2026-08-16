@@ -92,13 +92,6 @@ const Services = () => {
 
   const diabetologyServices = [
     {
-      id: "10",
-      title: "Type 1 & 2 Diabetes",
-      description: "Personalized care plans including insulin regulation, continuous glucose monitoring, and tailored diet charts. Effective management strategies to prevent long-term complications.",
-      icon: Activity,
-      image: "/images/diabetes-care-service.png"
-    },
-    {
       id: "11",
       title: "Metabolic & Thyroid Care",
       description: "Comprehensive testing and management of hypothyroidism, hyperthyroidism, PCOS, and other endocrine disorders. Advanced medical support for your metabolic system.",

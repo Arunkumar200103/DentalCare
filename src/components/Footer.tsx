@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="col-span-1 lg:col-span-2 lg:pr-12">
             <Link to="/" className="flex items-center space-x-3 mb-8 group w-max">
               <div className="relative flex items-center justify-center bg-white rounded-xl transition-colors duration-300 overflow-hidden">
-                <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-12 md:h-14 lg:h-16 w-auto object-contain" />
+                <img src="/images/brand/ds-logo.png" alt="DS Clinic Logo" className="h-16 md:h-20 lg:h-24 w-auto object-contain" />
               </div>
             </Link>
             <p className="text-blue-100/80 mb-8 text-base leading-relaxed font-medium max-w-md">
@@ -46,7 +46,7 @@ const Footer = () => {
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
                   <MapPin size={16} className="text-blue-200" />
                 </div>
-                <span className="text-sm font-medium leading-relaxed">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</span>
+                <a href="https://maps.app.goo.gl/24B8wDfiKuNJE8248?g_st=aw" target="_blank" rel="noreferrer" className="text-sm font-medium leading-relaxed hover:text-white hover:underline transition-colors block">No. 27, Moses Street,<br />West Gandhi Nagar,<br />Avadi, Chennai - 600054</a>
               </div>
               <div className="flex items-center space-x-3 text-blue-100/80">
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
