@@ -52,6 +52,7 @@ const AppointmentForm = () => {
     "De-addiction Therapy",
     "Anxiety & Depression Management",
     "Schizophrenia & Bipolar Disorder",
+    "Obsessive-Compulsive Disorder",
     "Counselling & Psychotherapy",
     "Insomnia & Sleep Disorders",
     "Headache & Migraine",

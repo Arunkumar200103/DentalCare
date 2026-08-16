@@ -83,6 +83,13 @@ const Services = () => {
     },
     {
       id: "09",
+      title: "Obsessive-Compulsive Disorder",
+      description: "Compassionate, evidence-based care for OCD, including obsessive thoughts and repetitive behaviours. We provide personalized treatment to reduce distress and restore control by both pharmacotherapy and psychotherapy (ERP).",
+      icon: Brain,
+      image: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "10",
       title: "Other Psychiatry Consultation",
       description: "Expert evaluation and holistic care plans for various other psychiatric and psychological conditions not covered under specific programs.",
       icon: Shield,
