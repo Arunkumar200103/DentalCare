@@ -19,6 +19,7 @@ import {
   Star
 } from 'lucide-react';
 import AppointmentBanner from '../components/banners/AppointmentBanner';
+import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -51,6 +52,11 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "" }: { value: number, s
 
 
 const Home = () => {
+  useSEO({
+    title: 'DS Clinic | Best Psychiatrist & Diabetologist in Avadi, Chennai',
+    description: 'Expert neuropsychiatry and diabetology care in Avadi, Chennai. Dr. Nirmal Kumar Seenan & Dr. Shylaja Nirmal provide comprehensive mind and body treatments.'
+  });
+
   const [openFaq, setOpenFaq] = useState<number | null>(1);
 
   const faqs = [
@@ -352,7 +358,7 @@ const Home = () => {
               <h3 className="text-3xl md:text-[40px] font-bold text-white mb-4 leading-tight">
                 Dr. Nirmal Kumar Seenan
               </h3>
-              <p className="text-blue-200 font-semibold text-lg mb-6">M.D. Psychiatry, Fellowship in Diabetology</p>
+              <p className="text-blue-200 font-semibold text-lg mb-6">MBBS, M.D. Psychiatry, Fellowship in Diabetology</p>
               
               <p className="text-white/80 text-[15px] lg:text-[16px] leading-[1.8] mb-10 max-w-[500px]">
                 With more than 12 years of clinical experience in Mind and Medicine, Dr. Nirmal combines advanced psychiatric care with metabolic health management. His holistic approach ensures that both your mind and body receive the expert, compassionate care they deserve.

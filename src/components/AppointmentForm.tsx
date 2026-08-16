@@ -48,7 +48,7 @@ const AppointmentForm = () => {
   ];
 
   const services = [
-    "Neurology & Psychiatry Consultation",
+    "Neuropsychiatry Consultation",
     "De-addiction Therapy",
     "Anxiety & Depression Management",
     "Diabetology & Endocrinology",
@@ -57,7 +57,7 @@ const AppointmentForm = () => {
   ];
 
   const doctors = [
-    "Dr. Nirmal Kumar Seenan (Neuro & Psychiatry)",
+    "Dr. Nirmal Kumar Seenan (Neuropsychiatry)",
     "Dr. Shylaja Nirmal (Diabetology & Gen. Medicine)"
   ];
 

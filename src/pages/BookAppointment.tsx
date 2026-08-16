@@ -2,6 +2,7 @@ import React from 'react';
 import AppointmentForm from '../components/AppointmentForm';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, Phone, Clock, Info } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -14,6 +15,11 @@ const staggerContainer = {
 };
 
 const BookAppointment = () => {
+  useSEO({
+    title: 'Book an Appointment | DS Clinic Avadi',
+    description: 'Schedule your consultation at DS Clinic. Easy online booking for psychiatry, diabetology, and general medicine appointments in Avadi, Chennai.'
+  });
+
   return (
     <div className="min-h-screen bg-background-main pt-24 pb-20 font-sans relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-50 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 pointer-events-none -z-10"></div>

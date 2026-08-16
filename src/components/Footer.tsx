@@ -16,7 +16,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-blue-100/80 mb-8 text-base leading-relaxed font-medium max-w-md">
-              Providing exceptional, confidential care in Neurology, Psychiatry, Diabetology, and General Medicine in Avadi, Chennai.
+              Providing exceptional, confidential care in Neuropsychiatry, Diabetology, and General Medicine in Avadi, Chennai.
             </p>
             <div className="flex flex-col space-y-2">
               <div className="text-sm font-bold text-white uppercase tracking-widest">Clinic Timings</div>
@@ -58,7 +58,7 @@ const Footer = () => {
                 <div className="p-2 bg-white/5 rounded-lg shrink-0">
                   <Mail size={16} className="text-blue-200" />
                 </div>
-                <span className="text-sm font-medium">info@dsclinic.com</span>
+                <span className="text-sm font-medium">dsclinicavadi@gmail.com</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -8,6 +9,11 @@ const fadeInUp = {
 };
 
 const Contact = () => {
+  useSEO({
+    title: 'Contact Us | DS Clinic Location & Phone Number',
+    description: 'Get in touch with DS Clinic. Find our location on Moses Street, Avadi, or call our urgent support helpline at +91 98846 56834.'
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -131,8 +137,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-[16px] font-bold text-[#0F172A] mb-1.5">Email Us</h3>
                     <p className="text-[#475569] text-[15px] leading-[1.6] font-medium">
-                      info@dsclinic.com<br />
-                      dr.nirmal@dsclinic.com
+                      dsclinicavadi@gmail.com
                     </p>
                   </div>
                 </div>

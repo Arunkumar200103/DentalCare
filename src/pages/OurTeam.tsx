@@ -11,6 +11,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import SpecialistBanner from '../components/banners/SpecialistBanner';
+import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -38,6 +39,11 @@ const infoAnimation = {
 };
 
 const OurTeam = () => {
+  useSEO({
+    title: 'Our Specialists | Dr. Nirmal Kumar Seenan & Dr. Shylaja | DS Clinic',
+    description: 'Meet our experienced specialists. Dr. Nirmal Kumar Seenan (Mind and Medicine) and Dr. Shylaja Nirmal (Diabetology & Family Medicine).'
+  });
+
   return (
     <div className="min-h-screen font-sans overflow-hidden pt-20 pb-12">
       
@@ -113,7 +119,7 @@ const OurTeam = () => {
               </h3>
               
               <h4 className="text-[18px] lg:text-[20px] font-semibold text-primary-700 mb-6">
-                Consultant Neuro & Psychiatrist
+                Consultant Neuropsychiatrist
               </h4>
 
               {/* Tags */}
@@ -130,11 +136,12 @@ const OurTeam = () => {
               </div>
 
               {/* Professional Description */}
-              <p className="text-[16px] text-slate-600 leading-[1.7] mb-8 font-medium">
-                Dr. Nirmal Kumar Seenan has clinical experience of more than 12 years in the field of Mind and Medicine. He is an Assistant Professor at Sri Muthukumaran Medical College Hospital & Research Institute, Chennai, and an honorary visiting consultant at Be Well Hospitals (Ambattur) and Sir Ivan Stedeford Hospital (Avadi).
-                <br className="mb-3" />
-                He specializes in treating cognitive disorders, severe anxiety, depression, and running comprehensive de-addiction programs.
-              </p>
+              <div className="text-[15px] lg:text-[16px] text-slate-600 leading-[1.7] mb-8 font-medium space-y-4">
+                <p>Dr. Nirmal Kumar Seenan, MBBS, MD (Psychiatry) is a Consultant Neuropsychiatrist based in Chennai with over a decade of experience in medical practice.</p>
+                <p>He provides comprehensive, evidence-based care for a wide range of mental health conditions, with expertise in psychiatric assessment, medication management, psychotherapy, and the management of complex psychiatric disorders.</p>
+                <p>Dr. Nirmal believes in a holistic approach to mental healthcare—caring for both the mind and the body. He considers physical health, emotional wellbeing, lifestyle, family, and social factors while developing an individualized treatment plan for each patient.</p>
+                <p>His aim is to provide compassionate, confidential, and patient-centred care in a safe and supportive environment.</p>
+              </div>
 
               {/* Trust Indicators */}
               <motion.div 

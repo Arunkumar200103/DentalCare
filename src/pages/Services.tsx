@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Brain, Heart, Activity, Stethoscope, Shield, ArrowRight, Salad } from 'lucide-react';
 import MentalWellnessBanner from '../components/banners/MentalWellnessBanner';
 import DiabetesCareBanner from '../components/banners/DiabetesCareBanner';
+import { useSEO } from '../hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -18,6 +19,11 @@ const staggerContainer = {
 
 
 const Services = () => {
+  useSEO({
+    title: 'Our Services | Psychiatry, Diabetology & General Medicine | DS Clinic',
+    description: 'Explore our specialized medical services including cognitive therapy, de-addiction, diabetes management, and metabolic health at DS Clinic Avadi.'
+  });
+
   const psychServices = [
     {
       id: "01",
@@ -46,33 +52,40 @@ const Services = () => {
       description: "Advanced diagnostic and therapeutic care for neurocognitive disorders, dementia, adult ADHD, and chronic headaches. Combining modern psychiatric care with deep neurological expertise.",
       icon: Activity,
       image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "05",
+      title: "Schizophrenia & Bipolar Disorder",
+      description: "Specialized, compassionate care for severe mood and psychotic disorders. We focus on long-term stability, medication management, and family support to help patients regain a functional, fulfilling life.",
+      icon: Brain,
+      image: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=crop&w=1200&q=80"
     }
   ];
 
   const diabetologyServices = [
     {
-      id: "05",
+      id: "06",
       title: "Type 1 & 2 Diabetes",
       description: "Personalized care plans including insulin regulation, continuous glucose monitoring, and tailored diet charts. Effective management strategies to prevent long-term complications.",
       icon: Activity,
       image: "/images/diabetes-care-service.png"
     },
     {
-      id: "06",
+      id: "07",
       title: "Metabolic & Thyroid Care",
       description: "Comprehensive testing and management of hypothyroidism, hyperthyroidism, PCOS, and other endocrine disorders. Advanced medical support for your metabolic system.",
       icon: Stethoscope,
       image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: "07",
+      id: "08",
       title: "General Consultations",
       description: "Routine check-ups, treatment of infectious diseases, blood pressure management, and comprehensive family health planning. Your primary destination for complete healthcare.",
       icon: Heart,
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      id: "08",
+      id: "09",
       title: "Lifestyle Counseling",
       description: "Expert guidance on weight management, heart-healthy diets, and preventative strategies to mitigate health risks before they develop. Build a sustainable foundation for wellness.",
       icon: Salad,
