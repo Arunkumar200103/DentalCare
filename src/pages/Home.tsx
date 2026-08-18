@@ -54,7 +54,8 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "" }: { value: number, s
 const Home = () => {
   useSEO({
     title: 'DS Clinic | Best Psychiatrist & Diabetologist in Avadi, Chennai',
-    description: 'Expert neuropsychiatry and diabetology care in Avadi, Chennai. Dr. Nirmal Kumar Seenan & Dr. Shylaja Nirmal provide comprehensive mind and body treatments.'
+    description: 'Expert neuropsychiatry, diabetology, and general medical care in Avadi, Chennai. Dr. Nirmal Kumar Seenan & Dr. Shylaja Nirmal provide comprehensive treatments.',
+    keywords: 'DS Clinic, DS Clinic Avadi, ds clinic, ds clinic chennai, ds clinic google, Psychiatrist Avadi, Diabetologist Avadi, Neuropsychiatrist Chennai, Dr. Nirmal Kumar Seenan, Dr. Shylaja Nirmal, Schizophrenia, Bipolar Disorder, counseling, diabetes care, mental wellness, clinic in avadi'
   });
 
   const [openFaq, setOpenFaq] = useState<number | null>(1);

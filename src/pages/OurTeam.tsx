@@ -42,7 +42,8 @@ const infoAnimation = {
 const OurTeam = () => {
   useSEO({
     title: 'Our Specialists | Dr. Nirmal Kumar Seenan & Dr. Shylaja | DS Clinic',
-    description: 'Meet our experienced specialists. Dr. Nirmal Kumar Seenan (Mind and Medicine) and Dr. Shylaja Nirmal (Occupational & Family Health, Diabetology).'
+    description: 'Meet our experienced specialists. Dr. Nirmal Kumar Seenan (Mind and Medicine) and Dr. Shylaja Nirmal (Occupational & Family Health, Diabetology).',
+    keywords: 'Dr Nirmal Kumar Seenan, Dr Shylaja Nirmal, best psychiatrist in Avadi, top diabetologist in Chennai, DS clinic team, neuropsychiatrist Chennai, occupational health physician, family health physician'
   });
 
   return (

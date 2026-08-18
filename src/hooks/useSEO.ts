@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 interface SEOProps {
   title: string;
   description: string;
+  keywords?: string;
 }
 
-export const useSEO = ({ title, description }: SEOProps) => {
+export const useSEO = ({ title, description, keywords }: SEOProps) => {
   useEffect(() => {
     // Update the document title
     document.title = title;
@@ -21,6 +22,19 @@ export const useSEO = ({ title, description }: SEOProps) => {
       document.head.appendChild(metaDescription);
     }
 
+    // Update the meta keywords
+    if (keywords) {
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) {
+        metaKeywords.setAttribute('content', keywords);
+      } else {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        metaKeywords.setAttribute('content', keywords);
+        document.head.appendChild(metaKeywords);
+      }
+    }
+
     // Update Open Graph tags for social sharing
     let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
@@ -31,5 +45,5 @@ export const useSEO = ({ title, description }: SEOProps) => {
     if (ogDescription) {
       ogDescription.setAttribute('content', description);
     }
-  }, [title, description]);
+  }, [title, description, keywords]);
 };

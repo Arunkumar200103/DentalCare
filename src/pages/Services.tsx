@@ -21,7 +21,8 @@ const staggerContainer = {
 const Services = () => {
   useSEO({
     title: 'Our Services | Psychiatry, Diabetology & General Medicine | DS Clinic',
-    description: 'Explore our specialized medical services including cognitive therapy, de-addiction, diabetes management, and metabolic health at DS Clinic Avadi.'
+    description: 'Explore our specialized medical services including cognitive therapy, de-addiction, diabetes management, and metabolic health at DS Clinic Avadi.',
+    keywords: 'DS Clinic services, psychiatry services Avadi, diabetology Avadi, mental health treatments, de-addiction therapy, schizophrenia treatment, sleep disorders, general medicine, Dr Nirmal Kumar Seenan services, Dr Shylaja Nirmal services'
   });
 
   const psychServices = [

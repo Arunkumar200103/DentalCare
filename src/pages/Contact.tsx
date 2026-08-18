@@ -11,7 +11,8 @@ const fadeInUp = {
 const Contact = () => {
   useSEO({
     title: 'Contact Us | DS Clinic Location & Phone Number',
-    description: 'Get in touch with DS Clinic. Find our location on Moses Street, Avadi, or call our urgent support helpline at +91 98846 56834.'
+    description: 'Get in touch with DS Clinic. Find our location on Moses Street, Avadi, or call our urgent support helpline at +91 98846 56834.',
+    keywords: 'contact DS clinic, DS clinic Avadi location, DS clinic phone number, book appointment Avadi, psychiatrist contact Chennai, diabetologist contact Avadi'
   });
 
   const [formData, setFormData] = useState({

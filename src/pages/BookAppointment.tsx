@@ -17,7 +17,8 @@ const staggerContainer = {
 const BookAppointment = () => {
   useSEO({
     title: 'Book an Appointment | DS Clinic Avadi',
-    description: 'Schedule your consultation at DS Clinic. Easy online booking for psychiatry, diabetology, and general medicine appointments in Avadi, Chennai.'
+    description: 'Schedule your consultation at DS Clinic. Easy online booking for psychiatry, diabetology, and general medicine appointments in Avadi, Chennai.',
+    keywords: 'book appointment DS clinic, schedule consultation DS clinic Avadi, online booking psychiatrist Avadi, book diabetologist Chennai, consult Dr Nirmal Kumar Seenan, consult Dr Shylaja Nirmal'
   });
 
   return (
